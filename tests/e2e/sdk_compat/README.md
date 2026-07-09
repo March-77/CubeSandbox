@@ -1,91 +1,57 @@
 # SDK Compatibility E2E Tests
 
-This directory contains live end-to-end tests that exercise the same user flows
-through multiple Python SDKs:
+This directory contains live end-to-end tests for Python SDK compatibility. The
+same backend-neutral cases run against:
 
-- `cubesandbox`: CubeSandbox Python SDK from `sdk/python`.
-- `e2b`: E2B Python SDK (`e2b-code-interpreter` or `e2b`) against the same CubeSandbox-compatible backend.
+- `cubesandbox`: the CubeSandbox Python SDK from `sdk/python`.
+- `e2b`: the E2B Python SDK (`e2b-code-interpreter` or `e2b`) against a CubeSandbox-compatible backend.
 
-The suite is opt-in. Test collection is safe by default and all cases are skipped
-unless `--run-e2e` is passed. Live runs default to the `cubesandbox` backend;
-set `SDK_E2E_BACKENDS=e2b,cubesandbox` or pass `--sdk-e2e-backends` for dual SDK
+The suite is opt-in. Without `--run-e2e`, pytest collection is safe and all cases
+are skipped. Live runs default to the `cubesandbox` backend so PR-gate runs stay
+small and stable. Use `SDK_E2E_BACKENDS=e2b,cubesandbox` for dual-SDK
 compatibility runs.
 
-## Layout
-
-- `adapters/`: SDK-specific shims that expose a small shared test surface.
-- `framework/`: configuration, preflight checks, capability flags, cleanup, assertions, and reporting helpers.
-- `cases/`: backend-neutral test cases, split by SDK capability domain.
-- `reports/`: local JSONL execution events. This directory is ignored by Git.
-
-## Test Classification
-
-This suite follows the same classification style used by `CubeSandboxTest`:
-
-- `smoke`: minimal live-environment checks, intended to prove that CubeAPI, the template, and at least one SDK backend are usable.
-- `p0`: PR-gate compatibility coverage. These tests should be small, deterministic, and safe to run often.
-- `p1`: daily compatibility regression. These tests cover broader lifecycle or CubeSandbox-specific behavior.
-- `p2`: weekly compatibility coverage for slower or more specialized SDK features.
-- `p3`: release qualification and long-running scenarios.
-
-The current case layout is:
-
-- `cases/lifecycle/`: sandbox create/info smoke checks, plus `p1` pause/resume coverage for backends that support `pause_resume`.
-- `cases/commands/`: command stdout/stderr/exit-code handling, environment access, special characters, multiline output, and missing command behavior.
-- `cases/filesystem/`: file API read/write, overwrite, multiline content, and interoperability between file APIs and shell commands.
-- `cases/run_code/`: Code Interpreter execution, expression text, stdout capture, kernel statefulness, and Python error reporting.
-
-The broader `CubeSandboxTest` repository uses this module split:
-
-- `smoke`: health and minimal CRUD
-- `api`: REST API lifecycle and template coverage
-- `sdk`: SDK commands, filesystem, info, and compatibility
-- `network`: outbound DNS/IP/network policy
-- `proxy`: CubeProxy routing
-- `isolation`: sandbox isolation and security boundaries
-- `extensions`: host mount and browser sandbox
-- `performance`: latency and concurrency
-- `stability`: TTL and long-running checks
-- `resilience`: component restart and recovery
-- `cli`: operational CLI coverage
-
-For this in-repo SDK compatibility suite, keep test modules backend-neutral and use markers/capabilities for backend-specific behavior. As coverage grows, add new capability domains next to the existing directories, for example `network/`, `proxy/`, `snapshot/`, and `metrics/`.
-
 ## Quick Start
-
-Run only the CubeSandbox SDK backend:
 
 ```bash
 cd tests/e2e/sdk_compat
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
-export SDK_E2E_BACKENDS=cubesandbox
+
 export CUBE_API_URL=http://10.0.1.5:3000
 export CUBE_TEMPLATE_ID=tpl-xxxxxxxxxxxxxxxxxxxxxxxx
 export CUBE_PROXY_NODE_IP=10.0.1.2
+
 pytest --run-e2e
 ```
 
-Run only PR-gate compatibility tests:
+The default command above runs only the `cubesandbox` backend. Equivalent explicit
+form:
 
 ```bash
-pytest --run-e2e -m p0
+pytest --run-e2e --sdk-e2e-backends=cubesandbox
 ```
 
-Run smoke only:
+## Execution Scope
+
+Recommended scopes:
 
 ```bash
+# Fast environment smoke
 pytest --run-e2e -m smoke
+
+# PR gate: stable CubeSandbox backend coverage
+pytest --run-e2e -m "smoke or p0" --sdk-e2e-backends=cubesandbox
+
+# Daily dual-SDK compatibility
+SDK_E2E_BACKENDS=e2b,cubesandbox pytest --run-e2e -m "p0 or p1"
+
+# Broader regression
+SDK_E2E_BACKENDS=e2b,cubesandbox pytest --run-e2e -m "p0 or p1 or p2"
 ```
 
-Run daily regression scope:
-
-```bash
-pytest --run-e2e -m "p0 or p1"
-```
-
-Run both backends after installing E2B:
+Run dual backend after installing E2B:
 
 ```bash
 pip install e2b-code-interpreter
@@ -94,76 +60,108 @@ export SDK_E2E_BACKENDS=e2b,cubesandbox
 pytest --run-e2e
 ```
 
-If the self-hosted sandbox HTTPS certificates are signed by a local CA, prefer
-trusting that CA through `SSL_CERT_FILE`. This keeps TLS verification enabled
-for the E2B SDK command/files/run_code transport:
+## Environment
+
+Required:
+
+- `CUBE_API_URL`: CubeAPI endpoint.
+- `CUBE_TEMPLATE_ID`: ready template ID used for sandbox creation.
+
+Optional:
+
+- `SDK_E2E_BACKENDS`: comma-separated backend list. Defaults to `cubesandbox`.
+- `CUBE_API_KEY`: API key if the target environment requires one.
+- `CUBE_PROXY_NODE_IP`: useful when wildcard sandbox DNS is unavailable from the runner.
+- `CUBE_PROXY_PORT_HTTP`: defaults to `80`.
+- `CUBE_SANDBOX_DOMAIN`: defaults to `cube.app`.
+- `SDK_E2E_CREATE_TIMEOUT`: sandbox create timeout in seconds. Defaults to `120`.
+- `SDK_E2E_COMMAND_TIMEOUT`: command timeout in seconds. Defaults to `30`.
+- `SDK_E2E_RUN_CODE_TIMEOUT`: code execution timeout in seconds. Defaults to `60`.
+- `SDK_E2E_KEEP_SANDBOX_ON_FAILURE`: preserve failed sandboxes for debugging. Defaults to `false`.
+- `SDK_E2E_REPORT_DIR`: JSONL report directory. Defaults to `reports/sdk-dual`.
+- `CUBE_PYTHON_SDK_PATH`: override local CubeSandbox Python SDK path.
+
+For self-hosted HTTPS sandbox endpoints, prefer trusting the local CA:
 
 ```bash
 export SSL_CERT_FILE=/root/.local/share/mkcert/rootCA.pem
 export SDK_E2E_E2B_INSECURE_TLS=false
-export SDK_E2E_BACKENDS=e2b,cubesandbox
-pytest --run-e2e
 ```
 
-For local test environments where the CA is unavailable, use
-`SDK_E2E_E2B_INSECURE_TLS=true` as a fallback.
+If the local CA is unavailable, `SDK_E2E_E2B_INSECURE_TLS=true` disables TLS
+certificate verification for the E2B SDK sandbox transport. Use it only for local
+test environments.
 
 ## Preflight
 
-When `--run-e2e` is enabled, the suite runs a session preflight before creating
-per-test sandboxes:
+When `--run-e2e` is enabled, a session preflight runs once before per-test
+sandbox creation. It checks:
 
 - `CUBE_TEMPLATE_ID` or `--cube-template-id` is present.
 - `GET /health` on `CUBE_API_URL` is reachable.
 - `GET /templates/{template_id}` returns the selected template.
-- If the template response exposes `status` or `state`, it must be ready-like
-  (`ready`, `active`, or `available`).
+- If the template response exposes `status` or `state`, it is ready-like:
+  `ready`, `active`, or `available`.
 
-Preflight failures are recorded in `reports/sdk-dual/events.jsonl` as
-`preflight_failed` and stop the run early with a single diagnostic message.
-
-You can also pass options instead of environment variables:
-
-```bash
-pytest --run-e2e \
-  --sdk-e2e-backends=cubesandbox \
-  --cube-api-url=http://10.0.1.5:3000 \
-  --cube-template-id=tpl-xxxxxxxxxxxxxxxxxxxxxxxx
-```
-
-## Required Environment
-
-- `CUBE_API_URL`: CubeAPI endpoint.
-- `CUBE_TEMPLATE_ID`: ready template ID used for sandbox creation.
-- `CUBE_PROXY_NODE_IP`: optional, but useful when wildcard sandbox DNS is not available from the runner.
-- `CUBE_PROXY_PORT_HTTP`: defaults to `80`.
-- `CUBE_SANDBOX_DOMAIN`: defaults to `cube.app`.
-- `SSL_CERT_FILE`: optional CA bundle path for self-hosted sandbox HTTPS certificates, for example `/root/.local/share/mkcert/rootCA.pem`.
-- `SDK_E2E_E2B_INSECURE_TLS`: disables TLS certificate verification for the E2B SDK sandbox transport. Prefer `SSL_CERT_FILE` when the local CA is available. This option defaults to `true` when `CUBE_API_URL` starts with `http://`, which matches local/self-hosted CubeSandbox test deployments.
+Preflight failures are recorded as `preflight_failed` and stop the run early with
+a single diagnostic message.
 
 ## Reporting
 
-The suite writes JSONL events to `SDK_E2E_REPORT_DIR/events.jsonl`, defaulting to
-`reports/sdk-dual/events.jsonl`.
+The suite writes JSONL events to `SDK_E2E_REPORT_DIR/events.jsonl`.
 
-Current event types:
+Event types:
 
-- `preflight_passed` / `preflight_failed`: live environment readiness checks.
-- `sandbox_created`: sandbox ID, backend, and pytest node ID.
+- `preflight_passed` / `preflight_failed`: live environment readiness.
+- `sandbox_created`: backend, sandbox ID, and pytest node ID.
 - `sandbox_cleanup` / `sandbox_kept`: teardown outcome.
-- `test_result`: pytest phase, outcome, duration, backend, sandbox ID, and failure
-  diagnostics. Failed test results include `error` and best-effort
-  `sandbox_info` when available.
+- `test_result`: pytest phase, outcome, duration, backend, sandbox ID, and failure diagnostics.
+
+Failed `test_result` events include `error` and best-effort `sandbox_info` when
+available.
+
+## Layout
+
+```text
+tests/e2e/sdk_compat/
+  adapters/      # SDK-specific shims over a shared adapter interface
+  framework/     # config, preflight, capability flags, cleanup, reporting
+  cases/         # backend-neutral cases split by capability domain
+  reports/       # local JSONL events, ignored except reports/.gitignore
+```
+
+Current capability domains:
+
+- `cases/lifecycle/`: create/info smoke checks and pause/resume coverage.
+- `cases/commands/`: stdout, stderr, exit code, env, special characters, multiline output, missing command.
+- `cases/filesystem/`: read/write, overwrite, multiline content, file API and shell interoperability.
+- `cases/run_code/`: expression text, stdout, kernel state, Python error reporting.
+
+Keep new cases backend-neutral. Add backend-specific behavior through capability
+markers instead of branching inside test bodies. Future domains can be added next
+to the existing directories, for example `network/`, `proxy/`, `metadata/`,
+`errors/`, and `concurrency/`.
+
+## Markers And Capabilities
+
+Priority markers:
+
+- `smoke`: minimum live-environment checks.
+- `p0`: PR-gate compatibility coverage.
+- `p1`: daily compatibility regression.
+- `p2`: weekly or broader feature coverage.
+- `p3`: release qualification and long-running scenarios.
+
+Capability markers:
+
+- `@pytest.mark.requires_capability("<name>")`: skip or deselect unsupported backends.
+- Common capabilities include `lifecycle`, `commands`, `filesystem`, and `run_code`.
+- CubeSandbox-specific capabilities currently include `pause_resume`, `network_policy`, and `proxy_url`.
 
 ## Cleanup
 
 Each test creates its own sandbox and destroys it in teardown. If SDK teardown
-fails, the suite falls back to `DELETE /sandboxes/{sandboxID}` against `CUBE_API_URL`.
+fails, the suite falls back to `DELETE /sandboxes/{sandboxID}` against
+`CUBE_API_URL`.
+
 Set `SDK_E2E_KEEP_SANDBOX_ON_FAILURE=true` to preserve sandboxes while debugging.
-
-## Capability Markers
-
-Use `@pytest.mark.requires_capability("<name>")` for features that are not shared
-by every backend. Current common coverage includes lifecycle create/delete,
-commands, filesystem, and `run_code`; CubeSandbox-specific coverage currently
-includes pause/resume.
