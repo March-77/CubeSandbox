@@ -7,7 +7,12 @@ import pytest
 
 from framework.assertions import assert_command_ok
 
-pytestmark = [pytest.mark.e2e, pytest.mark.sdk_compat, pytest.mark.p0]
+pytestmark = [
+    pytest.mark.e2e,
+    pytest.mark.sdk_compat,
+    pytest.mark.lifecycle,
+    pytest.mark.p0,
+]
 
 
 @pytest.mark.smoke

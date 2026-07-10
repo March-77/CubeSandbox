@@ -8,7 +8,7 @@ from typing import Any
 from adapters.base import SandboxAdapter
 from framework.capabilities import CUBESANDBOX_CAPABILITIES
 from framework.config import SdkE2EConfig
-from framework.models import CodeResult, CommandResult, SandboxInfo
+from framework.models import CodeResult, CommandResult, SandboxInfo, state_from_raw
 
 
 class CubeSandboxAdapter(SandboxAdapter):
@@ -16,20 +16,27 @@ class CubeSandboxAdapter(SandboxAdapter):
     capabilities = CUBESANDBOX_CAPABILITIES
 
     @classmethod
-    def create(cls, config: SdkE2EConfig, *, metadata: dict[str, str] | None = None) -> "CubeSandboxAdapter":
+    def create(
+        cls,
+        config: SdkE2EConfig,
+        *,
+        metadata: dict[str, str] | None = None,
+        create_options: dict[str, Any] | None = None,
+    ) -> "CubeSandboxAdapter":
         from cubesandbox import Config, Sandbox
 
-        sdk_config = Config(
-            api_url=config.cube_api_url,
-            template_id=config.cube_template_id,
-            proxy_node_ip=config.cube_proxy_node_ip,
-            proxy_port=config.cube_proxy_port_http,
-            sandbox_domain=config.cube_sandbox_domain,
-        )
+        sdk_config = cls._sdk_config(config)
+        opts = dict(create_options or {})
+        merged_metadata = dict(metadata or {})
+        extra_metadata = opts.pop("metadata", None)
+        if isinstance(extra_metadata, dict):
+            merged_metadata.update(extra_metadata)
+        timeout = opts.pop("timeout", config.create_timeout)
         sandbox = Sandbox.create(
-            timeout=config.create_timeout,
-            metadata=metadata,
+            timeout=timeout,
+            metadata=merged_metadata or None,
             config=sdk_config,
+            **opts,
         )
         return cls(sandbox, sdk_config=sdk_config, e2e_config=config)
 
@@ -39,16 +46,28 @@ class CubeSandboxAdapter(SandboxAdapter):
         sandbox_id: str,
         config: SdkE2EConfig,
     ) -> "CubeSandboxAdapter":
-        from cubesandbox import Config, Sandbox
+        from cubesandbox import Sandbox
 
-        sdk_config = Config(
+        sdk_config = cls._sdk_config(config)
+        return cls(Sandbox.connect(sandbox_id, config=sdk_config), sdk_config=sdk_config, e2e_config=config)
+
+    @classmethod
+    def list_sandboxes(cls, config: SdkE2EConfig) -> list[dict[str, Any]]:
+        from cubesandbox import Sandbox
+
+        return Sandbox.list(config=cls._sdk_config(config))
+
+    @staticmethod
+    def _sdk_config(config: SdkE2EConfig):
+        from cubesandbox import Config
+
+        return Config(
             api_url=config.cube_api_url,
             template_id=config.cube_template_id,
             proxy_node_ip=config.cube_proxy_node_ip,
             proxy_port=config.cube_proxy_port_http,
             sandbox_domain=config.cube_sandbox_domain,
         )
-        return cls(Sandbox.connect(sandbox_id, config=sdk_config), sdk_config=sdk_config, e2e_config=config)
 
     def __init__(self, sandbox: Any, *, sdk_config: Any, e2e_config: SdkE2EConfig | None = None) -> None:
         super().__init__(sandbox)
@@ -63,7 +82,7 @@ class CubeSandboxAdapter(SandboxAdapter):
         raw = self._sandbox.get_info()
         return SandboxInfo(
             sandbox_id=raw.get("sandboxID") or self.sandbox_id,
-            state=raw.get("state"),
+            state=state_from_raw(raw),
             raw=raw,
         )
 

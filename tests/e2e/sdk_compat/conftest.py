@@ -20,6 +20,32 @@ from framework.capabilities import CUBESANDBOX_CAPABILITIES, E2B_CAPABILITIES  #
 from framework.config import SdkE2EConfig  # noqa: E402
 from framework.preflight import run_preflight  # noqa: E402
 from framework.reporting import JsonlReporter  # noqa: E402
+from framework.trace import TraceCollector, reset_current_trace, set_current_trace  # noqa: E402
+
+
+def _load_dotenv(path: Path) -> None:
+    if not path.exists():
+        return
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        if line.startswith("export "):
+            line = line[len("export ") :].strip()
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = _strip_env_value(value.strip())
+        if key:
+            os.environ.setdefault(key, value)
+
+
+def _strip_env_value(value: str) -> str:
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+        return value[1:-1]
+    return value
+
+
+_load_dotenv(SDK_COMPAT_ROOT / ".env")
 
 
 def pytest_addoption(parser: pytest.Parser) -> None:
@@ -45,12 +71,19 @@ def pytest_addoption(parser: pytest.Parser) -> None:
         default=None,
         help="template ID for SDK E2E; defaults to CUBE_TEMPLATE_ID",
     )
+    group.addoption(
+        "--sdk-e2e-trace",
+        action="store_true",
+        default=False,
+        help="print every SDK adapter operation and include traces for passed tests",
+    )
 
 
 def pytest_configure(config: pytest.Config) -> None:
     for marker in (
         "sdk_compat: SDK compatibility E2E tests",
         "requires_capability(name): current SDK backend must support this capability",
+        "sandbox_create_options(**kwargs): SDK sandbox create options for this test",
         "requires_internet: test requires public internet access from the sandbox",
         "requires_cubeproxy: test requires CubeProxy routing to the sandbox",
     ):
@@ -76,6 +109,7 @@ def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item
 def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo):
     outcome = yield
     report = outcome.get_result()
+    setattr(item, f"rep_{report.when}", report)
     if report.when not in {"setup", "call", "teardown"}:
         return
     if report.when == "setup" and report.passed:
@@ -86,6 +120,7 @@ def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo):
         return
 
     adapter = item.funcargs.get("sdk_sandbox")
+    trace = item.funcargs.get("sdk_e2e_trace")
     sandbox_id = getattr(adapter, "sandbox_id", None)
     backend = item.funcargs.get("sdk_backend") or getattr(adapter, "backend", None)
     payload = {
@@ -98,6 +133,14 @@ def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo):
     }
     if report.failed:
         payload["error"] = report.longreprtext
+        if trace is not None:
+            payload["trace"] = trace.snapshot()
+            if not getattr(item, "_sdk_e2e_trace_dumped", False):
+                terminal = item.config.pluginmanager.get_plugin("terminalreporter")
+                if terminal is not None:
+                    terminal.write_sep("=", "SDK E2E trace")
+                    terminal.write_line(trace.format_failure())
+                item._sdk_e2e_trace_dumped = True
         if adapter is not None:
             try:
                 payload["sandbox_info"] = adapter.info().raw
@@ -105,6 +148,8 @@ def pytest_runtest_makereport(item: pytest.Item, call: pytest.CallInfo):
                 payload["sandbox_info_error"] = str(exc)
     elif report.skipped:
         payload["reason"] = str(report.longrepr)
+    elif report.when == "call" and trace is not None and trace.verbose:
+        payload["trace"] = trace.snapshot()
 
     reporter.record_test_result(**payload)
 
@@ -126,6 +171,22 @@ def sdk_e2e_reporter(sdk_e2e_config: SdkE2EConfig) -> JsonlReporter:
     return JsonlReporter(sdk_e2e_config.report_dir)
 
 
+@pytest.fixture()
+def sdk_e2e_trace(request: pytest.FixtureRequest, pytestconfig: pytest.Config) -> TraceCollector:
+    verbose = pytestconfig.getoption("--sdk-e2e-trace") or _env_true("SDK_E2E_TRACE")
+    terminal = pytestconfig.pluginmanager.get_plugin("terminalreporter")
+
+    def _emit(message: str) -> None:
+        if terminal is not None:
+            terminal.write_line(message)
+
+    return TraceCollector(
+        request.node.nodeid,
+        verbose=verbose,
+        emit=_emit,
+    )
+
+
 @pytest.fixture(scope="session", autouse=True)
 def sdk_e2e_preflight(pytestconfig: pytest.Config, sdk_e2e_config: SdkE2EConfig, sdk_e2e_reporter: JsonlReporter):
     if not pytestconfig.getoption("--run-e2e"):
@@ -142,11 +203,18 @@ def sdk_sandbox(
     sdk_backend: str,
     sdk_e2e_config: SdkE2EConfig,
     sdk_e2e_reporter: JsonlReporter,
+    sdk_e2e_trace: TraceCollector,
 ):
     for marker in request.node.iter_markers("requires_capability"):
         capability = marker.args[0]
         if capability not in _capabilities_for_backend(sdk_backend):
             pytest.skip(f"backend {sdk_backend!r} does not support capability {capability!r}")
+
+    if request.node.get_closest_marker("requires_cubeproxy") and not sdk_e2e_config.platform_lifecycle_enabled:
+        pytest.skip(
+            "platform lifecycle tests require SDK_E2E_PLATFORM_LIFECYCLE=true "
+            "(cube-proxy + lifecycle manager coordination)"
+        )
 
     if not sdk_e2e_config.cube_template_id:
         pytest.skip("CUBE_TEMPLATE_ID or --cube-template-id is required for SDK E2E")
@@ -157,38 +225,52 @@ def sdk_sandbox(
         "test_nodeid": request.node.nodeid,
         "test_run_id": uuid.uuid4().hex,
     }
+    create_options = _create_options_for_node(request.node)
+    if request.node.get_closest_marker("requires_cubeproxy"):
+        create_options.setdefault("timeout", sdk_e2e_config.platform_lifecycle_idle_timeout)
     request.node._sdk_e2e_backend = sdk_backend
+    trace_token = set_current_trace(sdk_e2e_trace)
     try:
-        adapter = create_adapter(sdk_backend, sdk_e2e_config, metadata=metadata)
-    except ImportError as exc:
-        pytest.skip(str(exc))
-    request.node._sdk_e2e_sandbox_id = adapter.sandbox_id
+        try:
+            adapter = create_adapter(
+                sdk_backend,
+                sdk_e2e_config,
+                metadata=metadata,
+                create_options=create_options,
+            )
+        except ImportError as exc:
+            pytest.skip(str(exc))
+        request.node._sdk_e2e_sandbox_id = adapter.sandbox_id
 
-    sdk_e2e_reporter.record(
-        "sandbox_created",
-        backend=sdk_backend,
-        sandbox_id=adapter.sandbox_id,
-        nodeid=request.node.nodeid,
-    )
-    try:
-        yield adapter
+        sdk_e2e_reporter.record(
+            "sandbox_created",
+            backend=sdk_backend,
+            sandbox_id=adapter.sandbox_id,
+            nodeid=request.node.nodeid,
+        )
+        try:
+            yield adapter
+        finally:
+            failed = _test_failed(request.node)
+            if sdk_e2e_config.keep_sandbox_on_failure and failed:
+                sdk_e2e_reporter.record(
+                    "sandbox_kept",
+                    backend=sdk_backend,
+                    sandbox_id=adapter.sandbox_id,
+                    nodeid=request.node.nodeid,
+                    reason="test_failed",
+                )
+            else:
+                errors = safe_kill(adapter, sdk_e2e_config)
+                sdk_e2e_reporter.record(
+                    "sandbox_cleanup",
+                    backend=sdk_backend,
+                    sandbox_id=adapter.sandbox_id,
+                    nodeid=request.node.nodeid,
+                    errors=errors,
+                )
     finally:
-        if sdk_e2e_config.keep_sandbox_on_failure:
-            sdk_e2e_reporter.record(
-                "sandbox_kept",
-                backend=sdk_backend,
-                sandbox_id=adapter.sandbox_id,
-                nodeid=request.node.nodeid,
-            )
-        else:
-            errors = safe_kill(adapter, sdk_e2e_config)
-            sdk_e2e_reporter.record(
-                "sandbox_cleanup",
-                backend=sdk_backend,
-                sandbox_id=adapter.sandbox_id,
-                nodeid=request.node.nodeid,
-                errors=errors,
-            )
+        reset_current_trace(trace_token)
 
 
 def _config_from_pytest(config: pytest.Config) -> SdkE2EConfig:
@@ -205,3 +287,28 @@ def _capabilities_for_backend(backend: str) -> frozenset[str]:
     if backend == "e2b":
         return E2B_CAPABILITIES
     return frozenset()
+
+
+def _create_options_for_node(node: pytest.Item) -> dict:
+    create_options: dict = {}
+    for marker in node.iter_markers("sandbox_create_options"):
+        create_options.update(marker.kwargs)
+        if marker.args:
+            if len(marker.args) != 1 or not isinstance(marker.args[0], dict):
+                raise ValueError("sandbox_create_options accepts keyword arguments or one dict argument")
+            create_options.update(marker.args[0])
+    return create_options
+
+
+def _test_failed(node: pytest.Item) -> bool:
+    return any(
+        getattr(report, "failed", False)
+        for report in (
+            getattr(node, "rep_setup", None),
+            getattr(node, "rep_call", None),
+        )
+    )
+
+
+def _env_true(name: str) -> bool:
+    return os.environ.get(name, "").strip().lower() in {"1", "true", "yes", "on"}

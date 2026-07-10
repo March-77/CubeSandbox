@@ -35,6 +35,11 @@ class SdkE2EConfig:
     e2b_insecure_tls: bool
     report_dir: Path
     cube_python_sdk_path: str | None
+    platform_lifecycle_enabled: bool
+    platform_lifecycle_idle_timeout: int
+    platform_lifecycle_wait_margin: int
+    platform_lifecycle_poll_timeout: int
+    cube_proxy_admin_port: int
 
     @classmethod
     def from_env(
@@ -68,6 +73,17 @@ class SdkE2EConfig:
             ),
             report_dir=Path(os.environ.get("SDK_E2E_REPORT_DIR", "reports/sdk-dual")),
             cube_python_sdk_path=os.environ.get("CUBE_PYTHON_SDK_PATH") or None,
+            platform_lifecycle_enabled=_bool_env("SDK_E2E_PLATFORM_LIFECYCLE"),
+            platform_lifecycle_idle_timeout=int(
+                os.environ.get("SDK_E2E_PLATFORM_LIFECYCLE_IDLE_TIMEOUT", "30")
+            ),
+            platform_lifecycle_wait_margin=int(
+                os.environ.get("SDK_E2E_PLATFORM_LIFECYCLE_WAIT_MARGIN", "20")
+            ),
+            platform_lifecycle_poll_timeout=int(
+                os.environ.get("SDK_E2E_PLATFORM_LIFECYCLE_POLL_TIMEOUT", "45")
+            ),
+            cube_proxy_admin_port=int(os.environ.get("CUBE_PROXY_ADMIN_PORT", "8082")),
         )
 
     def env(self) -> dict[str, str]:

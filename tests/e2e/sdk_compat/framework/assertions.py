@@ -14,4 +14,13 @@ def assert_command_ok(result: CommandResult) -> None:
 
 
 def assert_code_ok(result: CodeResult) -> None:
-    assert result.error is None, f"expected successful code execution, got error={result.error!r}"
+    assert result.error is None, (
+        f"expected successful code execution, got error={result.error!r}; "
+        f"text={result.text!r} stdout={result.stdout!r} stderr={result.stderr!r}"
+    )
+
+
+def assert_stdout_contains(result: CommandResult, expected: str) -> None:
+    assert expected in result.stdout, (
+        f"expected stdout to contain {expected!r}, got stdout={result.stdout!r} stderr={result.stderr!r}"
+    )

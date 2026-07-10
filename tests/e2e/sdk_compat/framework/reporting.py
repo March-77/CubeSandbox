@@ -8,6 +8,8 @@ import time
 from pathlib import Path
 from typing import Any
 
+from framework.trace import sanitize
+
 
 class JsonlReporter:
     def __init__(self, report_dir: Path) -> None:
@@ -16,7 +18,7 @@ class JsonlReporter:
 
     def record(self, event: str, **fields: Any) -> None:
         self._report_dir.mkdir(parents=True, exist_ok=True)
-        payload = {"ts": time.time(), "event": event, **fields}
+        payload = sanitize({"ts": time.time(), "event": event, **fields})
         with self._path.open("a", encoding="utf-8") as fh:
             fh.write(json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n")
 

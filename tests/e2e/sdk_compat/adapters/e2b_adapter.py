@@ -9,7 +9,7 @@ from typing import Any
 from adapters.base import SandboxAdapter
 from framework.capabilities import E2B_CAPABILITIES
 from framework.config import SdkE2EConfig
-from framework.models import CodeResult, CommandResult, SandboxInfo
+from framework.models import CodeResult, CommandResult, SandboxInfo, state_from_raw
 
 
 def _import_e2b_sandbox():
@@ -46,34 +46,53 @@ class E2BAdapter(SandboxAdapter):
     capabilities = E2B_CAPABILITIES
 
     @classmethod
-    def create(cls, config: SdkE2EConfig, *, metadata: dict[str, str] | None = None) -> "E2BAdapter":
+    def create(
+        cls,
+        config: SdkE2EConfig,
+        *,
+        metadata: dict[str, str] | None = None,
+        create_options: dict[str, Any] | None = None,
+    ) -> "E2BAdapter":
         Sandbox = _import_e2b_sandbox()
         _configure_e2b_transport(config)
         os.environ.setdefault("E2B_API_URL", config.cube_api_url)
         os.environ.setdefault("E2B_API_KEY", os.environ.get("CUBE_API_KEY", "dummy"))
 
+        opts = dict(create_options or {})
+        merged_metadata = dict(metadata or {})
+        extra_metadata = opts.pop("metadata", None)
+        if isinstance(extra_metadata, dict):
+            merged_metadata.update(extra_metadata)
+
         kwargs: dict[str, Any] = {
             "template": config.cube_template_id,
             "timeout": config.create_timeout,
-            "metadata": metadata,
+            "metadata": merged_metadata or None,
         }
+        kwargs.update(opts)
         kwargs = {key: value for key, value in kwargs.items() if value is not None}
         try:
             sandbox = Sandbox.create(**kwargs)
         except AttributeError:
             sandbox = Sandbox(**kwargs)
-        return cls(sandbox)
+        return cls(sandbox, e2e_config=config)
 
     @classmethod
-    def connect(cls, sandbox_id: str, config: SdkE2EConfig) -> "E2BAdapter":
+    def connect(cls, sandbox_id: str, config: SdkE2EConfig, *, timeout: int | None = None) -> "E2BAdapter":
         Sandbox = _import_e2b_sandbox()
         _configure_e2b_transport(config)
         os.environ.setdefault("E2B_API_URL", config.cube_api_url)
         try:
+            sandbox = Sandbox.connect(sandbox_id, timeout=timeout)
+        except TypeError:
             sandbox = Sandbox.connect(sandbox_id)
         except AttributeError:
             sandbox = Sandbox(sandbox_id=sandbox_id)
-        return cls(sandbox)
+        return cls(sandbox, e2e_config=config)
+
+    def __init__(self, sandbox: Any, *, e2e_config: SdkE2EConfig | None = None) -> None:
+        super().__init__(sandbox)
+        self._e2e_config = e2e_config
 
     @property
     def sandbox_id(self) -> str:
@@ -90,7 +109,7 @@ class E2BAdapter(SandboxAdapter):
                 break
         return SandboxInfo(
             sandbox_id=raw.get("sandboxID") or raw.get("sandbox_id") or self.sandbox_id,
-            state=raw.get("state"),
+            state=state_from_raw(raw),
             raw=raw,
         )
 
@@ -147,12 +166,38 @@ class E2BAdapter(SandboxAdapter):
             error=getattr(result, "error", None),
         )
 
+    def pause(self, *, timeout: int = 60) -> None:
+        try:
+            self._sandbox.pause(request_timeout=timeout)
+        except TypeError:
+            self._sandbox.pause()
+
+    def resume_or_connect(self, *, timeout: int = 60) -> "E2BAdapter":
+        return type(self).connect(
+            self.sandbox_id,
+            self._e2e_config or SdkE2EConfig.from_env(),
+            timeout=timeout,
+        )
+
     def kill(self) -> None:
         for name in ("kill", "delete", "close"):
             method = getattr(self._sandbox, name, None)
             if callable(method):
                 method()
                 return
+
+    @classmethod
+    def list_sandboxes(cls, config: SdkE2EConfig) -> list[dict[str, Any]]:
+        Sandbox = _import_e2b_sandbox()
+        _configure_e2b_transport(config)
+        list_method = getattr(Sandbox, "list", None)
+        if not callable(list_method):
+            raise RuntimeError("E2B sandbox SDK does not expose Sandbox.list()")
+        try:
+            entries = list_method()
+        except TypeError:
+            entries = list_method(template=config.cube_template_id)
+        return [entry if isinstance(entry, dict) else dict(entry) for entry in entries or []]
 
 
 def _configure_e2b_transport(config: SdkE2EConfig) -> None:

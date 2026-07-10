@@ -27,3 +27,11 @@ class SandboxInfo:
     sandbox_id: str
     state: str | None = None
     raw: dict[str, Any] = field(default_factory=dict)
+
+
+def state_from_raw(raw: dict[str, Any]) -> str | None:
+    for key in ("state", "State", "status", "Status"):
+        value = raw.get(key)
+        if value:
+            return str(value)
+    return None
