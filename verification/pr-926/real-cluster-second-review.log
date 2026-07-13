@@ -1,0 +1,19 @@
+2026-07-14T00:45:07+08:00
+template_id=tpl-36769b42f06641e3b3b39db1
+=== run_example.py ===
+health PASS: {'status': 'ok', 'ruby': '3.0.2'}
+counter increment PASS: {'counter': 1}
+counter readback PASS: {'counter': 1}
+public URL: https://4567-5920582e5d7e4f82988c08fd8400cedc.cube.app/counter
+=== resume_example.py ===
+Counter API before pause PASS: {'counter': 1}
+Pausing 6fd76faa6f5c46aab80c6acff4767c31 with counter=1
+Counter API after resume PASS: {'counter': 1}
+Restored 6fd76faa6f5c46aab80c6acff4767c31; application state persisted
+=== concurrency and process identity ===
+sandbox_id=a7230d7c65ac4590ab0a96b9e621a14b
+root         5 envd
+user        10 ruby
+REAL_MICROVM_CONCURRENT_COUNTER=PASS counter=20
+REAL_MICROVM_PROCESS_IDENTITY=PASS
+PR926_SECOND_REVIEW_REAL_CLUSTER=PASS

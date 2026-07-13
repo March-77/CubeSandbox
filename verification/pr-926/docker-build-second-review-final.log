@@ -1,0 +1,66 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  28.67kB
+Step 1/20 : ARG CUBE_BASE_IMAGE=ghcr.io/tencentcloud/cubesandbox-base:2026.16
+Step 2/20 : FROM ${CUBE_BASE_IMAGE} AS builder
+ ---> 34ea312a63a5
+Step 3/20 : ARG DEBIAN_FRONTEND=noninteractive
+ ---> Using cache
+ ---> d7f78c043853
+Step 4/20 : ARG BUNDLER_VERSION=2.5.23
+ ---> Using cache
+ ---> a6ce42cb3019
+Step 5/20 : RUN apt-get update     && apt-get install -y --no-install-recommends         build-essential ca-certificates ruby ruby-dev     && gem install bundler -v "${BUNDLER_VERSION}" --no-document     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> f0aa580327e2
+Step 6/20 : WORKDIR /opt/sinatra
+ ---> Using cache
+ ---> d168e79292d7
+Step 7/20 : COPY Gemfile ./
+ ---> Using cache
+ ---> 7742fca1802d
+Step 8/20 : RUN bundle config set without development     && bundle config set path /opt/bundle     && bundle install --jobs 4 --retry 3     && rm -rf /opt/bundle/ruby/*/cache
+ ---> Using cache
+ ---> e1a4c21959e5
+Step 9/20 : FROM ${CUBE_BASE_IMAGE}
+ ---> 34ea312a63a5
+Step 10/20 : ARG DEBIAN_FRONTEND=noninteractive
+ ---> Using cache
+ ---> d7f78c043853
+Step 11/20 : ARG BUNDLER_VERSION=2.5.23
+ ---> Using cache
+ ---> a6ce42cb3019
+Step 12/20 : RUN apt-get update     && apt-get install -y --no-install-recommends ca-certificates ruby     && gem install bundler -v "${BUNDLER_VERSION}" --no-document     && apt-get purge -y curl     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 10050611d4ef
+Step 13/20 : WORKDIR /opt/sinatra
+ ---> Using cache
+ ---> 4698df380beb
+Step 14/20 : COPY --from=builder --chown=1000:1000 /opt/bundle /opt/bundle
+ ---> Using cache
+ ---> c0c24af6cb45
+Step 15/20 : COPY --from=builder --chown=1000:1000 /opt/sinatra/Gemfile.lock ./Gemfile.lock
+ ---> Using cache
+ ---> 579bf0c23010
+Step 16/20 : COPY --chown=1000:1000 Gemfile app.rb ./
+ ---> cd7513533a7b
+Step 17/20 : RUN mkdir -p /workspace/data     && chown -R 1000:1000 /workspace /opt/sinatra /opt/bundle
+ ---> Running in 82461b452ab6
+ ---> Removed intermediate container 82461b452ab6
+ ---> e8bf17115128
+Step 18/20 : ENV APP_ENV=production     BUNDLE_PATH=/opt/bundle     BUNDLE_WITHOUT=development     PORT=4567     WORKSPACE=/workspace
+ ---> Running in c92aaf652a96
+ ---> Removed intermediate container c92aaf652a96
+ ---> 85ec620c5afd
+Step 19/20 : EXPOSE 4567 49983
+ ---> Running in 36bd92083ce1
+ ---> Removed intermediate container 36bd92083ce1
+ ---> e097ea3c242a
+Step 20/20 : CMD ["runuser", "--user", "user", "--", "bundle", "exec", "ruby", "app.rb"]
+ ---> Running in b4ac6fa6eb23
+ ---> Removed intermediate container b4ac6fa6eb23
+ ---> 4259b4a11f9d
+Successfully built 4259b4a11f9d
+Successfully tagged ruby-sinatra-cube:pr926-medium

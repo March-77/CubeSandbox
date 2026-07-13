@@ -37,6 +37,15 @@ example scripts make executable response assertions, and pause/resume state is
 verified through the Sinatra API. Template `tpl-5653d34da4ea4a4cbf9e21c5` reached
 READY; the updated examples and an in-MicroVM process identity check all passed.
 
+The refreshed automated review produced five follow-up findings. Commit
+`70f384c7d4277c5c89817717d07ca465e3d3d9a7` addresses them by retrying transient
+non-JSON health responses, serializing counter updates with file locks,
+initializing the data directory once, reporting cleanup failures, and clarifying
+the runtime hardening intent. Replacement template
+`tpl-36769b42f06641e3b3b39db1` reached READY. A real PVM MicroVM passed the
+updated examples, strict TLS, process identity checks, and 20 concurrent counter
+increments without lost updates.
+
 ## PR #925
 
 Commit `c5f84f71c32df9c274812155e3bb77695c9808c2` was used to build all three
