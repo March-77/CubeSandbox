@@ -1,0 +1,13 @@
+2026-07-14T00:36:12+08:00
+template_id=tpl-5653d34da4ea4a4cbf9e21c5
+=== run_example.py ===
+health PASS: {'status': 'ok', 'ruby': '3.0.2'}
+counter increment PASS: {'counter': 1}
+counter readback PASS: {'counter': 1}
+public URL: https://4567-fd0e7af4a4c742659e7bfe16ee0ef274.cube.app/counter
+=== resume_example.py ===
+Counter API before pause PASS: {'counter': 1}
+Pausing d4332229eba74d88a94e93159d164772 with counter=1
+Counter API after resume PASS: {'counter': 1}
+Restored d4332229eba74d88a94e93159d164772; application state persisted
+PR926_MEDIUM_FIXES_REAL_CLUSTER=PASS

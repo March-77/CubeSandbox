@@ -1,6 +1,6 @@
 # Real CubeSandbox cluster verification evidence
 
-Verification date: 2026-07-13 (Asia/Shanghai)
+Verification dates: 2026-07-13 through 2026-07-14 (Asia/Shanghai)
 
 Cluster:
 
@@ -29,6 +29,13 @@ pinning Bundler 2.5.23, the application then exposed a missing `rackup` runtime
 dependency. Both fixes are included in follow-up commit `96886cb`. The fixed
 image was registered as a Cube template; `run_example.py` and
 `resume_example.py` then passed in real MicroVMs.
+
+Follow-up commit `9744216` addresses the automated review's Medium findings:
+the runtime image no longer contains build tools or curl, Sinatra runs as UID
+1000 while the Cube `envd` process retains the privileges it requires, both
+example scripts make executable response assertions, and pause/resume state is
+verified through the Sinatra API. Template `tpl-5653d34da4ea4a4cbf9e21c5` reached
+READY; the updated examples and an in-MicroVM process identity check all passed.
 
 ## PR #925
 

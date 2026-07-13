@@ -1,0 +1,23 @@
+configured_user= image_size=47994124
+ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux-gnu]
+Bundler version 2.5.23
+The Gemfile's dependencies are satisfied
+/usr/sbin/runuser
+absent=gcc
+absent=g++
+absent=make
+absent=curl
+absent_package=ruby-dev
+absent_package=build-essential
+absent_package=curl
+87eb6dfba1f6a89e9df1ff41362cce48f9cda782ac07e39c661f96e55d154a27
+sinatra_health={"status":"ok","ruby":"3.0.2"}
+counter_post={"counter":1}
+counter_get={"counter":1}
+USER                PID                 COMMAND
+root                134797              tini
+root                134841              cube-entrypoint
+root                134844              envd
+root                134845              runuser
+1000                134850              ruby
+LOCAL_CONTAINER_VERIFICATION=PASS
