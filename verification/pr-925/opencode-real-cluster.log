@@ -1,0 +1,8 @@
+PR commit: c5f84f71c32df9c274812155e3bb77695c9808c2
+Template: tpl-3ddfb227d94142a08f3909d5
+Sandbox ID: 9439ed988b584fd8b430be3da7b31547
+CLI: 0.5.0
+Node: v24.18.0
+Paused: 9439ed988b584fd8b430be3da7b31547
+Restored file: opencode-checkpoint-ok
+PR925_OPENCODE_REAL_CLUSTER=PASS

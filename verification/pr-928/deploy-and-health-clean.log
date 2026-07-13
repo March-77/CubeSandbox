@@ -1,0 +1,16 @@
+2026-07-13T23:42:27+08:00
+PR commit:
+96ff2dfd7ae4e1b9036a84f2f9cec45915adaad4
+binary hashes:
+04cdf90460d8627f0a902e856c6fe4dcca89d5f8f312ba4e696b8e2e61744149  /root/pr-928/CubeAPI/target/release/cube-api
+04cdf90460d8627f0a902e856c6fe4dcca89d5f8f312ba4e696b8e2e61744149  /usr/local/services/cubetoolbox/CubeAPI/bin/cube-api
+service:
+active
+health:
+{"status":"ok","sandboxes":0}
+startup log:
+Jul 13 23:41:55 VM-0-8-opencloudos bash[75067]: 2026-07-13T15:41:55.936265Z  INFO cube_api: cube-api starting debug_mode=false log_level=info bind=0.0.0.0:3000 auth_enabled=false
+Jul 13 23:41:55 VM-0-8-opencloudos bash[75067]: 2026-07-13T15:41:55.937028Z  INFO cube_api: webhook endpoint enabled url=http://127.0.0.1:8088/webhook
+Jul 13 23:41:55 VM-0-8-opencloudos bash[75067]: 2026-07-13T15:41:55.937039Z  INFO cube_api: structured event logger started log_dir=/data/log/CubeAPI log_prefix=cube-api min_level=info
+Jul 13 23:41:56 VM-0-8-opencloudos bash[75067]: 2026-07-13T15:41:56.172284Z  INFO cube_api: cube-api listening on 0.0.0.0:3000
+Jul 13 23:41:56 VM-0-8-opencloudos systemd[1]: Started cube-sandbox-cube-api.service - Cube Sandbox Cube API.

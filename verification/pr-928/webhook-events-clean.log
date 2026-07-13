@@ -1,0 +1,5 @@
+{"timestamp": "2026-07-13T15:43:09.639875621Z", "level": "info", "event": "sandbox.created", "sandbox_id": "181357ec9ca24137a5b4ab83d9a7a480", "template_id": "tpl-88f3722a6655408cbcb352e9"}
+{"timestamp": "2026-07-13T15:43:10.004523233Z", "level": "info", "event": "sandbox.paused", "sandbox_id": "181357ec9ca24137a5b4ab83d9a7a480"}
+{"timestamp": "2026-07-13T15:43:10.052761675Z", "level": "info", "event": "sandbox.resumed", "sandbox_id": "181357ec9ca24137a5b4ab83d9a7a480"}
+{"timestamp": "2026-07-13T15:43:10.543274910Z", "level": "info", "event": "sandbox.deleted", "sandbox_id": "181357ec9ca24137a5b4ab83d9a7a480"}
+EVENT_COUNT=4

@@ -1,0 +1,48 @@
+2026-07-13T23:03:33+08:00
+Linux VM-0-8-opencloudos 6.6.69-opencloudos9.cubesandbox.pvm.host-gb85200d80fa2 #1 SMP PREEMPT_DYNAMIC Sat Jul 11 14:48:29 CST 2026 x86_64 x86_64 x86_64 GNU/Linux
+NAME="OpenCloudOS"
+VERSION="9.6"
+ID="opencloudos"
+ID_LIKE="opencloudos"
+VERSION_ID="9.6"
+PLATFORM_ID="platform:oc9"
+PRETTY_NAME="OpenCloudOS 9.6"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:opencloudos:opencloudos:9"
+HOME_URL="https://www.opencloudos.org/"
+BUG_REPORT_URL="https://bugs.opencloudos.tech/"
+crw-rw-rw- 1 root kvm 10, 232 Jul 13 23:00 /dev/kvm
+kvm_pvm                49152  0
+kvm                  1179648  1 kvm_pvm
+kmem_cache             16384  2 kvm,kvm_pvm
+TARGET        SOURCE   FSTYPE OPTIONS
+/data/cubelet /dev/vdb xfs    rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota
+         =                       reflink=1    bigtime=1 inobtcount=1 nrext64=1
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/vda1      xfs   100G   12G   89G  12% /
+/dev/vdb       xfs   200G  3.9G  197G   2% /data/cubelet
+● cube-sandbox-control.target - Cube Sandbox control-plane stack
+     Loaded: loaded (/etc/systemd/system/cube-sandbox-control.target; enabled; preset: disabled)
+     Active: active since Mon 2026-07-13 23:02:40 CST; 52s ago
+
+Jul 13 23:02:40 VM-0-8-opencloudos systemd[1]: Reached target cube-sandbox-control.target - Cube Sandbox control-plane stack.
+[quickcheck] role=control
+[quickcheck] cubemaster=127.0.0.1:8089
+[quickcheck] network-agent-health=127.0.0.1:19090
+[quickcheck] cube-api-health=127.0.0.1:3000
+[quickcheck] check systemd units
+[quickcheck] check container runtime state
+[quickcheck] 1/5 check network-agent healthz
+[quickcheck] 2/5 check network-agent readyz
+[quickcheck] 3/5 check cubemaster /notify/health
+[quickcheck] 4/5 check cube-api /health
+[quickcheck] 5/5 check essential sockets and config
+[quickcheck] OK
+{"status":"ok","sandboxes":0}NAMES                    STATUS                        PORTS
+cube-webui               Up 53 seconds (healthy)       0.0.0.0:12088->80/tcp
+cube-proxy               Up About a minute             
+cube-sandbox-mysql       Up About a minute (healthy)   127.0.0.1:3306->3306/tcp, 33060/tcp
+cube-egress              Up About a minute             
+cube-lifecycle-manager   Up About a minute             
+cube-sandbox-redis       Up About a minute (healthy)   127.0.0.1:6379->6379/tcp
+cube-proxy-coredns       Up About a minute             

@@ -1,0 +1,8 @@
+PR commit: c5f84f71c32df9c274812155e3bb77695c9808c2
+Template: tpl-888273af55a3457d995539ce
+Sandbox ID: 6c349216af824d81a64c01daae6bc06e
+CLI: 1.0.33 (Claude Code)
+Node: v24.18.0
+Pausing: 6c349216af824d81a64c01daae6bc06e
+Restored file: claude-checkpoint-ok
+PR925_CLAUDE_REAL_CLUSTER=PASS

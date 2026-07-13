@@ -1,0 +1,7 @@
+PR #928 explicit CubeAPI lifecycle endpoints
+created: 181357ec9ca24137a5b4ab83d9a7a480
+paused: 181357ec9ca24137a5b4ab83d9a7a480
+resumed: 181357ec9ca24137a5b4ab83d9a7a480
+post-resume command: running-after-resume
+deleted: 181357ec9ca24137a5b4ab83d9a7a480
+LIFECYCLE_ENDPOINTS=PASS

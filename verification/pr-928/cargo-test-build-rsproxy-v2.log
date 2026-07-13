@@ -1,0 +1,1053 @@
+2026-07-13T23:37:47+08:00
+Cargo transport mirror: rsproxy.cn via --config
+    Updating `rsproxy` index
+ Downloading crates ...
+  Downloaded aead v0.5.2 (registry `rsproxy`)
+  Downloaded async-trait v0.1.89 (registry `rsproxy`)
+  Downloaded brotli-decompressor v5.0.0 (registry `rsproxy`)
+  Downloaded rand_core v0.6.4 (registry `rsproxy`)
+  Downloaded rand v0.9.4 (registry `rsproxy`)
+  Downloaded aes v0.8.4 (registry `rsproxy`)
+  Downloaded aho-corasick v1.1.4 (registry `rsproxy`)
+  Downloaded ahash v0.7.8 (registry `rsproxy`)
+  Downloaded alloc-no-stdlib v2.0.4 (registry `rsproxy`)
+  Downloaded crc v3.4.0 (registry `rsproxy`)
+  Downloaded crc-catalog v2.5.0 (registry `rsproxy`)
+  Downloaded blowfish v0.9.1 (registry `rsproxy`)
+  Downloaded rand_chacha v0.9.0 (registry `rsproxy`)
+  Downloaded hashbrown v0.14.5 (registry `rsproxy`)
+  Downloaded anstyle-parse v1.0.0 (registry `rsproxy`)
+  Downloaded adler2 v2.0.1 (registry `rsproxy`)
+  Downloaded anstream v1.0.0 (registry `rsproxy`)
+  Downloaded cfg_aliases v0.2.1 (registry `rsproxy`)
+  Downloaded rand_chacha v0.3.1 (registry `rsproxy`)
+  Downloaded aes-gcm v0.10.3 (registry `rsproxy`)
+  Downloaded alloc-stdlib v0.2.2 (registry `rsproxy`)
+  Downloaded deranged v0.4.0 (registry `rsproxy`)
+  Downloaded clap_derive v4.6.0 (registry `rsproxy`)
+  Downloaded spin v0.9.8 (registry `rsproxy`)
+  Downloaded rand_core v0.9.5 (registry `rsproxy`)
+  Downloaded raw-cpuid v11.6.0 (registry `rsproxy`)
+  Downloaded anyhow v1.0.102 (registry `rsproxy`)
+  Downloaded serde v1.0.228 (registry `rsproxy`)
+  Downloaded tinyvec_macros v0.1.1 (registry `rsproxy`)
+  Downloaded futures-util v0.3.32 (registry `rsproxy`)
+  Downloaded flate2 v1.1.9 (registry `rsproxy`)
+  Downloaded rustls-webpki v0.103.13 (registry `rsproxy`)
+  Downloaded flume v0.11.1 (registry `rsproxy`)
+  Downloaded ring v0.17.14 (registry `rsproxy`)
+  Downloaded colorchoice v1.0.5 (registry `rsproxy`)
+  Downloaded der v0.7.10 (registry `rsproxy`)
+  Downloaded syn v1.0.109 (registry `rsproxy`)
+  Downloaded base64ct v1.8.3 (registry `rsproxy`)
+  Downloaded axum-extra v0.9.6 (registry `rsproxy`)
+  Downloaded rsa v0.9.10 (registry `rsproxy`)
+  Downloaded futures-macro v0.3.32 (registry `rsproxy`)
+  Downloaded cipher v0.4.4 (registry `rsproxy`)
+  Downloaded atoi v2.0.0 (registry `rsproxy`)
+  Downloaded shlex v1.3.0 (registry `rsproxy`)
+  Downloaded tracing-core v0.1.36 (registry `rsproxy`)
+  Downloaded regex v1.12.3 (registry `rsproxy`)
+  Downloaded synstructure v0.13.2 (registry `rsproxy`)
+  Downloaded socket2 v0.6.3 (registry `rsproxy`)
+  Downloaded anstyle v1.0.14 (registry `rsproxy`)
+  Downloaded sqlx-macros v0.8.6 (registry `rsproxy`)
+  Downloaded unicase v2.9.0 (registry `rsproxy`)
+  Downloaded tokio-rustls v0.26.4 (registry `rsproxy`)
+  Downloaded toml v0.5.11 (registry `rsproxy`)
+  Downloaded serde_core v1.0.228 (registry `rsproxy`)
+  Downloaded rust-ini v0.18.0 (registry `rsproxy`)
+  Downloaded block-buffer v0.10.4 (registry `rsproxy`)
+  Downloaded pest_derive v2.8.6 (registry `rsproxy`)
+  Downloaded scopeguard v1.2.0 (registry `rsproxy`)
+  Downloaded tower-http v0.5.2 (registry `rsproxy`)
+  Downloaded uuid v1.22.0 (registry `rsproxy`)
+  Downloaded fastrand v2.3.0 (registry `rsproxy`)
+  Downloaded ryu v1.0.23 (registry `rsproxy`)
+  Downloaded dotenvy v0.15.7 (registry `rsproxy`)
+  Downloaded thiserror v1.0.69 (registry `rsproxy`)
+  Downloaded syn v2.0.117 (registry `rsproxy`)
+  Downloaded rustls-pki-types v1.14.1 (registry `rsproxy`)
+  Downloaded yaml-rust v0.4.5 (registry `rsproxy`)
+  Downloaded hashbrown v0.12.3 (registry `rsproxy`)
+  Downloaded axum-macros v0.4.2 (registry `rsproxy`)
+  Downloaded thiserror-impl v1.0.69 (registry `rsproxy`)
+  Downloaded serde_path_to_error v0.1.20 (registry `rsproxy`)
+  Downloaded tracing-log v0.2.0 (registry `rsproxy`)
+  Downloaded diff v0.1.13 (registry `rsproxy`)
+  Downloaded futures-timer v3.0.3 (registry `rsproxy`)
+  Downloaded sqlx-core v0.8.6 (registry `rsproxy`)
+  Downloaded sync_wrapper v1.0.2 (registry `rsproxy`)
+  Downloaded form_urlencoded v1.2.2 (registry `rsproxy`)
+  Downloaded bitflags v2.11.0 (registry `rsproxy`)
+  Downloaded config v0.13.4 (registry `rsproxy`)
+  Downloaded rustversion v1.0.22 (registry `rsproxy`)
+  Downloaded spki v0.7.3 (registry `rsproxy`)
+  Downloaded sha2 v0.10.9 (registry `rsproxy`)
+  Downloaded displaydoc v0.2.5 (registry `rsproxy`)
+  Downloaded either v1.16.0 (registry `rsproxy`)
+  Downloaded allocator-api2 v0.2.21 (registry `rsproxy`)
+  Downloaded serde_derive v1.0.228 (registry `rsproxy`)
+  Downloaded errno v0.3.14 (registry `rsproxy`)
+  Downloaded crc32fast v1.5.0 (registry `rsproxy`)
+  Downloaded rustc-hash v2.1.2 (registry `rsproxy`)
+  Downloaded sqlx-sqlite v0.8.6 (registry `rsproxy`)
+  Downloaded atomic-waker v1.1.2 (registry `rsproxy`)
+  Downloaded compression-core v0.4.31 (registry `rsproxy`)
+  Downloaded clap v4.6.0 (registry `rsproxy`)
+  Downloaded tracing-attributes v0.1.31 (registry `rsproxy`)
+  Downloaded clap_lex v1.1.0 (registry `rsproxy`)
+  Downloaded reqwest v0.12.28 (registry `rsproxy`)
+  Downloaded sha1 v0.10.6 (registry `rsproxy`)
+  Downloaded futures-io v0.3.32 (registry `rsproxy`)
+  Downloaded tower-service v0.3.3 (registry `rsproxy`)
+  Downloaded serde_json v1.0.149 (registry `rsproxy`)
+  Downloaded unsafe-libyaml-norway v0.2.15 (registry `rsproxy`)
+  Downloaded foldhash v0.1.5 (registry `rsproxy`)
+  Downloaded serde_norway v0.9.42 (registry `rsproxy`)
+  Downloaded tokio-util v0.7.18 (registry `rsproxy`)
+  Downloaded regex-syntax v0.8.10 (registry `rsproxy`)
+  Downloaded sqlx-postgres v0.8.6 (registry `rsproxy`)
+  Downloaded time-macros v0.2.22 (registry `rsproxy`)
+  Downloaded futures-intrusive v0.5.0 (registry `rsproxy`)
+  Downloaded tracing v0.1.44 (registry `rsproxy`)
+  Downloaded ordered-multimap v0.4.3 (registry `rsproxy`)
+  Downloaded spinning_top v0.3.0 (registry `rsproxy`)
+  Downloaded utf8_iter v1.0.4 (registry `rsproxy`)
+  Downloaded byteorder v1.5.0 (registry `rsproxy`)
+  Downloaded idna v0.4.0 (registry `rsproxy`)
+  Downloaded home v0.5.12 (registry `rsproxy`)
+  Downloaded anstyle-query v1.1.5 (registry `rsproxy`)
+  Downloaded generic-array v0.14.7 (registry `rsproxy`)
+  Downloaded find-msvc-tools v0.1.9 (registry `rsproxy`)
+  Downloaded signal-hook-registry v1.4.8 (registry `rsproxy`)
+  Downloaded equivalent v1.0.2 (registry `rsproxy`)
+  Downloaded sqlx-macros-core v0.8.6 (registry `rsproxy`)
+  Downloaded getrandom v0.3.4 (registry `rsproxy`)
+  Downloaded time v0.3.41 (registry `rsproxy`)
+  Downloaded rust-multipart-rfc7578_2 v0.6.1 (registry `rsproxy`)
+  Downloaded validator_types v0.16.0 (registry `rsproxy`)
+  Downloaded base64 v0.22.1 (registry `rsproxy`)
+  Downloaded tower-layer v0.3.3 (registry `rsproxy`)
+  Downloaded chrono v0.4.44 (registry `rsproxy`)
+  Downloaded pathdiff v0.2.3 (registry `rsproxy`)
+  Downloaded bytes v1.11.1 (registry `rsproxy`)
+  Downloaded ucd-trie v0.1.7 (registry `rsproxy`)
+  Downloaded getrandom v0.2.17 (registry `rsproxy`)
+  Downloaded futures-sink v0.3.32 (registry `rsproxy`)
+  Downloaded axum-core v0.4.5 (registry `rsproxy`)
+  Downloaded crossbeam-utils v0.8.21 (registry `rsproxy`)
+  Downloaded bcrypt v0.15.1 (registry `rsproxy`)
+  Downloaded futures-channel v0.3.32 (registry `rsproxy`)
+  Downloaded yoke-derive v0.8.1 (registry `rsproxy`)
+  Downloaded futures v0.3.32 (registry `rsproxy`)
+  Downloaded url v2.5.8 (registry `rsproxy`)
+  Downloaded try-lock v0.2.5 (registry `rsproxy`)
+  Downloaded futures-core v0.3.32 (registry `rsproxy`)
+  Downloaded is_terminal_polyfill v1.70.2 (registry `rsproxy`)
+  Downloaded zerotrie v0.2.3 (registry `rsproxy`)
+  Downloaded opaque-debug v0.3.1 (registry `rsproxy`)
+  Downloaded crypto-common v0.1.7 (registry `rsproxy`)
+  Downloaded dashmap v5.5.3 (registry `rsproxy`)
+  Downloaded event-listener v5.4.1 (registry `rsproxy`)
+  Downloaded regex-automata v0.4.14 (registry `rsproxy`)
+  Downloaded time-core v0.1.4 (registry `rsproxy`)
+  Downloaded autocfg v1.5.0 (registry `rsproxy`)
+  Downloaded cookie v0.18.1 (registry `rsproxy`)
+  Downloaded axum v0.7.9 (registry `rsproxy`)
+  Downloaded fnv v1.0.7 (registry `rsproxy`)
+  Downloaded zstd v0.13.3 (registry `rsproxy`)
+  Downloaded compression-codecs v0.4.37 (registry `rsproxy`)
+  Downloaded hyper-util v0.1.20 (registry `rsproxy`)
+  Downloaded log v0.4.29 (registry `rsproxy`)
+  Downloaded linked-hash-map v0.5.6 (registry `rsproxy`)
+  Downloaded strsim v0.11.1 (registry `rsproxy`)
+  Downloaded httpdate v1.0.3 (registry `rsproxy`)
+  Downloaded tracing-serde v0.2.0 (registry `rsproxy`)
+  Downloaded tower v0.5.3 (registry `rsproxy`)
+  Downloaded serde_urlencoded v0.7.1 (registry `rsproxy`)
+  Downloaded cfg-if v1.0.4 (registry `rsproxy`)
+  Downloaded tower-http v0.6.11 (registry `rsproxy`)
+  Downloaded slab v0.4.12 (registry `rsproxy`)
+  Downloaded sqlx-mysql v0.8.6 (registry `rsproxy`)
+  Downloaded thiserror-impl v2.0.18 (registry `rsproxy`)
+  Downloaded data-encoding v2.10.0 (registry `rsproxy`)
+  Downloaded tinystr v0.8.2 (registry `rsproxy`)
+  Downloaded memchr v2.8.0 (registry `rsproxy`)
+  Downloaded unicode-normalization v0.1.25 (registry `rsproxy`)
+  Downloaded if_chain v1.0.3 (registry `rsproxy`)
+  Downloaded yoke v0.8.1 (registry `rsproxy`)
+  Downloaded tokio v1.50.0 (registry `rsproxy`)
+  Downloaded proc-macro2 v1.0.106 (registry `rsproxy`)
+  Downloaded portable-atomic v1.13.1 (registry `rsproxy`)
+  Downloaded universal-hash v0.5.1 (registry `rsproxy`)
+  Downloaded clap_builder v4.6.0 (registry `rsproxy`)
+  Downloaded percent-encoding v2.3.2 (registry `rsproxy`)
+  Downloaded tokio-macros v2.6.1 (registry `rsproxy`)
+  Downloaded concurrent-queue v2.5.0 (registry `rsproxy`)
+  Downloaded zerofrom-derive v0.1.6 (registry `rsproxy`)
+  Downloaded version_check v0.9.5 (registry `rsproxy`)
+  Downloaded tower v0.4.13 (registry `rsproxy`)
+  Downloaded auto-future v1.0.0 (registry `rsproxy`)
+  Downloaded zerovec v0.11.5 (registry `rsproxy`)
+  Downloaded want v0.3.1 (registry `rsproxy`)
+  Downloaded cpufeatures v0.2.17 (registry `rsproxy`)
+  Downloaded signature v2.2.0 (registry `rsproxy`)
+  Downloaded axum-test v14.10.0 (registry `rsproxy`)
+  Downloaded pretty_assertions v1.4.1 (registry `rsproxy`)
+  Downloaded hmac v0.12.1 (registry `rsproxy`)
+  Downloaded zerovec-derive v0.11.2 (registry `rsproxy`)
+  Downloaded governor v0.6.3 (registry `rsproxy`)
+  Downloaded powerfmt v0.2.0 (registry `rsproxy`)
+  Downloaded http-body v1.0.1 (registry `rsproxy`)
+  Downloaded futures-executor v0.3.32 (registry `rsproxy`)
+  Downloaded icu_properties v2.1.2 (registry `rsproxy`)
+  Downloaded hdrhistogram v7.5.4 (registry `rsproxy`)
+  Downloaded writeable v0.6.2 (registry `rsproxy`)
+  Downloaded indexmap v1.9.3 (registry `rsproxy`)
+  Downloaded headers-core v0.3.0 (registry `rsproxy`)
+  Downloaded idna_adapter v1.2.1 (registry `rsproxy`)
+  Downloaded rand v0.8.6 (registry `rsproxy`)
+  Downloaded mio v1.1.1 (registry `rsproxy`)
+  Downloaded jobserver v0.1.34 (registry `rsproxy`)
+  Downloaded proc-macro-error-attr v1.0.4 (registry `rsproxy`)
+  Downloaded icu_normalizer v2.1.1 (registry `rsproxy`)
+  Downloaded once_cell v1.21.4 (registry `rsproxy`)
+  Downloaded inout v0.1.4 (registry `rsproxy`)
+  Downloaded headers v0.4.1 (registry `rsproxy`)
+  Downloaded parking_lot v0.12.5 (registry `rsproxy`)
+  Downloaded quote v1.0.45 (registry `rsproxy`)
+  Downloaded hex v0.4.3 (registry `rsproxy`)
+  Downloaded num-iter v0.1.45 (registry `rsproxy`)
+  Downloaded zerocopy v0.8.42 (registry `rsproxy`)
+  Downloaded nu-ansi-term v0.50.3 (registry `rsproxy`)
+  Downloaded md-5 v0.10.6 (registry `rsproxy`)
+  Downloaded hyper v1.8.1 (registry `rsproxy`)
+  Downloaded async-compression v0.4.41 (registry `rsproxy`)
+  Downloaded validator_derive v0.16.0 (registry `rsproxy`)
+  Downloaded pem-rfc7468 v0.7.0 (registry `rsproxy`)
+  Downloaded icu_provider v2.1.1 (registry `rsproxy`)
+  Downloaded quinn v0.11.9 (registry `rsproxy`)
+  Downloaded pin-project-lite v0.2.17 (registry `rsproxy`)
+  Downloaded stable_deref_trait v1.2.1 (registry `rsproxy`)
+  Downloaded icu_normalizer_data v2.1.1 (registry `rsproxy`)
+  Downloaded vcpkg v0.2.15 (registry `rsproxy`)
+  Downloaded ppv-lite86 v0.2.21 (registry `rsproxy`)
+  Downloaded zeroize v1.8.2 (registry `rsproxy`)
+  Downloaded num-traits v0.2.19 (registry `rsproxy`)
+  Downloaded typenum v1.19.0 (registry `rsproxy`)
+  Downloaded libm v0.2.16 (registry `rsproxy`)
+  Downloaded matchers v0.2.0 (registry `rsproxy`)
+  Downloaded unicode-bidi v0.3.18 (registry `rsproxy`)
+  Downloaded hkdf v0.12.4 (registry `rsproxy`)
+  Downloaded matchit v0.7.3 (registry `rsproxy`)
+  Downloaded potential_utf v0.1.4 (registry `rsproxy`)
+  Downloaded ron v0.7.1 (registry `rsproxy`)
+  Downloaded crossbeam-queue v0.3.12 (registry `rsproxy`)
+  Downloaded reserve-port v2.4.0 (registry `rsproxy`)
+  Downloaded ctr v0.9.2 (registry `rsproxy`)
+  Downloaded pin-project v1.1.11 (registry `rsproxy`)
+  Downloaded utoipa v5.4.0 (registry `rsproxy`)
+  Downloaded hashbrown v0.15.5 (registry `rsproxy`)
+  Downloaded icu_collections v2.1.1 (registry `rsproxy`)
+  Downloaded utf8parse v0.2.2 (registry `rsproxy`)
+  Downloaded iana-time-zone v0.1.65 (registry `rsproxy`)
+  Downloaded mime_guess v2.0.5 (registry `rsproxy`)
+  Downloaded itoa v1.0.17 (registry `rsproxy`)
+  Downloaded nonzero_ext v0.3.0 (registry `rsproxy`)
+  Downloaded ipnet v2.12.0 (registry `rsproxy`)
+  Downloaded encoding_rs v0.8.35 (registry `rsproxy`)
+  Downloaded untrusted v0.9.0 (registry `rsproxy`)
+  Downloaded unicode-ident v1.0.24 (registry `rsproxy`)
+  Downloaded digest v0.10.7 (registry `rsproxy`)
+  Downloaded brotli v8.0.2 (registry `rsproxy`)
+  Downloaded quanta v0.12.6 (registry `rsproxy`)
+  Downloaded num-bigint-dig v0.8.6 (registry `rsproxy`)
+  Downloaded base64 v0.13.1 (registry `rsproxy`)
+  Downloaded http v1.4.0 (registry `rsproxy`)
+  Downloaded tokio-stream v0.1.18 (registry `rsproxy`)
+  Downloaded multer v3.1.0 (registry `rsproxy`)
+  Downloaded unicode-properties v0.1.4 (registry `rsproxy`)
+  Downloaded simd-adler32 v0.3.8 (registry `rsproxy`)
+  Downloaded json5 v0.4.1 (registry `rsproxy`)
+  Downloaded sqlx v0.8.6 (registry `rsproxy`)
+  Downloaded validator v0.16.1 (registry `rsproxy`)
+  Downloaded ghash v0.5.1 (registry `rsproxy`)
+  Downloaded litemap v0.8.1 (registry `rsproxy`)
+  Downloaded futures-task v0.3.32 (registry `rsproxy`)
+  Downloaded zstd-sys v2.0.16+zstd.1.5.7 (registry `rsproxy`)
+  Downloaded zerofrom v0.1.6 (registry `rsproxy`)
+  Downloaded polyval v0.6.2 (registry `rsproxy`)
+  Downloaded getrandom v0.4.2 (registry `rsproxy`)
+  Downloaded quinn-udp v0.5.14 (registry `rsproxy`)
+  Downloaded sharded-slab v0.1.7 (registry `rsproxy`)
+  Downloaded thread_local v1.1.9 (registry `rsproxy`)
+  Downloaded bitflags v1.3.2 (registry `rsproxy`)
+  Downloaded smallvec v1.15.1 (registry `rsproxy`)
+  Downloaded nom v7.1.3 (registry `rsproxy`)
+  Downloaded rustls v0.23.40 (registry `rsproxy`)
+  Downloaded http v0.2.12 (registry `rsproxy`)
+  Downloaded tinyvec v1.10.0 (registry `rsproxy`)
+  Downloaded thiserror v2.0.18 (registry `rsproxy`)
+  Downloaded proc-macro-error v1.0.4 (registry `rsproxy`)
+  Downloaded pkcs1 v0.7.5 (registry `rsproxy`)
+  Downloaded const-oid v0.9.6 (registry `rsproxy`)
+  Downloaded subtle v2.6.1 (registry `rsproxy`)
+  Downloaded lru-slab v0.1.2 (registry `rsproxy`)
+  Downloaded icu_properties_data v2.1.2 (registry `rsproxy`)
+  Downloaded pin-project-internal v1.1.11 (registry `rsproxy`)
+  Downloaded num-integer v0.1.46 (registry `rsproxy`)
+  Downloaded stringprep v0.1.5 (registry `rsproxy`)
+  Downloaded tungstenite v0.24.0 (registry `rsproxy`)
+  Downloaded lock_api v0.4.14 (registry `rsproxy`)
+  Downloaded tokio-tungstenite v0.24.0 (registry `rsproxy`)
+  Downloaded hashbrown v0.16.1 (registry `rsproxy`)
+  Downloaded parking_lot_core v0.9.12 (registry `rsproxy`)
+  Downloaded indexmap v2.13.0 (registry `rsproxy`)
+  Downloaded yansi v1.0.1 (registry `rsproxy`)
+  Downloaded tracing-subscriber v0.3.22 (registry `rsproxy`)
+  Downloaded mime v0.3.17 (registry `rsproxy`)
+  Downloaded idna v1.1.0 (registry `rsproxy`)
+  Downloaded zstd-safe v7.2.4 (registry `rsproxy`)
+  Downloaded quinn-proto v0.11.14 (registry `rsproxy`)
+  Downloaded hashlink v0.10.0 (registry `rsproxy`)
+  Downloaded utoipa-gen v5.4.0 (registry `rsproxy`)
+  Downloaded pest v2.8.6 (registry `rsproxy`)
+  Downloaded pkg-config v0.3.32 (registry `rsproxy`)
+  Downloaded minimal-lexical v0.2.1 (registry `rsproxy`)
+  Downloaded miniz_oxide v0.8.9 (registry `rsproxy`)
+  Downloaded cc v1.2.56 (registry `rsproxy`)
+  Downloaded whoami v1.6.1 (registry `rsproxy`)
+  Downloaded libsqlite3-sys v0.30.1 (registry `rsproxy`)
+  Downloaded dlv-list v0.3.0 (registry `rsproxy`)
+  Downloaded webpki-roots v0.26.11 (registry `rsproxy`)
+  Downloaded no-std-compat v0.4.1 (registry `rsproxy`)
+  Downloaded webpki-roots v1.0.7 (registry `rsproxy`)
+  Downloaded heck v0.5.0 (registry `rsproxy`)
+  Downloaded icu_locale_core v2.1.1 (registry `rsproxy`)
+  Downloaded pin-utils v0.1.0 (registry `rsproxy`)
+  Downloaded pest_meta v2.8.6 (registry `rsproxy`)
+  Downloaded pkcs8 v0.10.2 (registry `rsproxy`)
+  Downloaded httparse v1.10.1 (registry `rsproxy`)
+  Downloaded utf-8 v0.7.6 (registry `rsproxy`)
+  Downloaded hyper-rustls v0.27.9 (registry `rsproxy`)
+  Downloaded http-body-util v0.1.3 (registry `rsproxy`)
+  Downloaded lazy_static v1.5.0 (registry `rsproxy`)
+  Downloaded parking v2.2.1 (registry `rsproxy`)
+  Downloaded zmij v1.0.21 (registry `rsproxy`)
+  Downloaded pest_generator v2.8.6 (registry `rsproxy`)
+  Downloaded num-conv v0.1.0 (registry `rsproxy`)
+  Downloaded libc v0.2.183 (registry `rsproxy`)
+   Compiling proc-macro2 v1.0.106
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.45
+   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling version_check v0.9.5
+   Compiling memchr v2.8.0
+   Compiling itoa v1.0.17
+   Compiling smallvec v1.15.1
+   Compiling typenum v1.19.0
+   Compiling serde_core v1.0.228
+   Compiling pin-project-lite v0.2.17
+   Compiling once_cell v1.21.4
+   Compiling generic-array v0.14.7
+   Compiling bytes v1.11.1
+   Compiling futures-core v0.3.32
+   Compiling parking_lot_core v0.9.12
+   Compiling scopeguard v1.2.0
+   Compiling subtle v2.6.1
+   Compiling lock_api v0.4.14
+   Compiling futures-sink v0.3.32
+   Compiling find-msvc-tools v0.1.9
+   Compiling shlex v1.3.0
+   Compiling futures-channel v0.3.32
+   Compiling serde v1.0.228
+   Compiling const-oid v0.9.6
+   Compiling slab v0.4.12
+   Compiling futures-io v0.3.32
+   Compiling syn v2.0.117
+   Compiling stable_deref_trait v1.2.1
+   Compiling futures-task v0.3.32
+   Compiling log v0.4.29
+   Compiling tracing-core v0.1.36
+   Compiling zeroize v1.8.2
+   Compiling autocfg v1.5.0
+   Compiling getrandom v0.2.17
+   Compiling jobserver v0.1.34
+   Compiling rand_core v0.6.4
+   Compiling parking_lot v0.12.5
+   Compiling crypto-common v0.1.7
+   Compiling cc v1.2.56
+   Compiling errno v0.3.14
+   Compiling mio v1.1.1
+   Compiling socket2 v0.6.3
+   Compiling signal-hook-registry v1.4.8
+   Compiling block-buffer v0.10.4
+   Compiling http v1.4.0
+   Compiling zerocopy v0.8.42
+   Compiling digest v0.10.7
+   Compiling libm v0.2.16
+   Compiling cpufeatures v0.2.17
+   Compiling num-traits v0.2.19
+   Compiling writeable v0.6.2
+   Compiling zmij v1.0.21
+   Compiling litemap v0.8.1
+   Compiling percent-encoding v2.3.2
+   Compiling icu_properties_data v2.1.2
+   Compiling serde_json v1.0.149
+   Compiling icu_normalizer_data v2.1.1
+   Compiling httparse v1.10.1
+   Compiling http-body v1.0.1
+   Compiling form_urlencoded v1.2.2
+   Compiling tower-service v0.3.3
+   Compiling spin v0.9.8
+   Compiling byteorder v1.5.0
+   Compiling base64 v0.22.1
+   Compiling rustls-pki-types v1.14.1
+   Compiling ring v0.17.14
+   Compiling crossbeam-utils v0.8.21
+   Compiling ahash v0.7.8
+   Compiling tower-layer v0.3.3
+   Compiling untrusted v0.9.0
+   Compiling pkg-config v0.3.32
+   Compiling utf8_iter v1.0.4
+   Compiling lazy_static v1.5.0
+   Compiling bitflags v2.11.0
+   Compiling sha1 v0.10.6
+   Compiling aho-corasick v1.1.4
+   Compiling zstd-sys v2.0.16+zstd.1.5.7
+   Compiling rustls v0.23.40
+   Compiling try-lock v0.2.5
+   Compiling httpdate v1.0.3
+   Compiling equivalent v1.0.2
+   Compiling regex-syntax v0.8.10
+   Compiling mime v0.3.17
+   Compiling thiserror v1.0.69
+   Compiling base64ct v1.8.3
+   Compiling synstructure v0.13.2
+   Compiling pem-rfc7468 v0.7.0
+   Compiling want v0.3.1
+   Compiling sync_wrapper v1.0.2
+   Compiling atomic-waker v1.1.2
+   Compiling tinyvec_macros v0.1.1
+   Compiling pin-utils v0.1.0
+   Compiling thiserror v2.0.18
+   Compiling ryu v1.0.23
+   Compiling tinyvec v1.10.0
+   Compiling hashbrown v0.12.3
+   Compiling ppv-lite86 v0.2.21
+   Compiling der v0.7.10
+   Compiling webpki-roots v1.0.7
+   Compiling http-body-util v0.1.3
+   Compiling rand_chacha v0.3.1
+   Compiling zerofrom-derive v0.1.6
+   Compiling futures-macro v0.3.32
+   Compiling yoke-derive v0.8.1
+   Compiling tokio-macros v2.6.1
+   Compiling serde_derive v1.0.228
+   Compiling futures-util v0.3.32
+   Compiling zerovec-derive v0.11.2
+   Compiling tokio v1.50.0
+   Compiling zerofrom v0.1.6
+   Compiling displaydoc v0.2.5
+   Compiling yoke v0.8.1
+   Compiling tracing-attributes v0.1.31
+   Compiling zerotrie v0.2.3
+   Compiling zerovec v0.11.5
+   Compiling rand v0.8.6
+   Compiling tracing v0.1.44
+   Compiling tinystr v0.8.2
+   Compiling icu_locale_core v2.1.1
+   Compiling potential_utf v0.1.4
+   Compiling thiserror-impl v1.0.69
+   Compiling icu_collections v2.1.1
+   Compiling icu_provider v2.1.1
+   Compiling thiserror-impl v2.0.18
+   Compiling icu_properties v2.1.2
+   Compiling icu_normalizer v2.1.1
+   Compiling inout v0.1.4
+   Compiling rustversion v1.0.22
+   Compiling crc32fast v1.5.0
+   Compiling alloc-no-stdlib v2.0.4
+   Compiling ucd-trie v0.1.7
+   Compiling syn v1.0.109
+   Compiling hashbrown v0.16.1
+   Compiling idna_adapter v1.2.1
+   Compiling ipnet v2.12.0
+   Compiling idna v1.1.0
+   Compiling zstd-safe v7.2.4
+   Compiling pest v2.8.6
+   Compiling alloc-stdlib v0.2.2
+   Compiling cipher v0.4.4
+   Compiling url v2.5.8
+   Compiling indexmap v2.13.0
+   Compiling spki v0.7.3
+   Compiling hyper v1.8.1
+   Compiling tower v0.5.3
+   Compiling async-trait v0.1.89
+   Compiling unicode-normalization v0.1.25
+   Compiling num-integer v0.1.46
+   Compiling hyper-util v0.1.20
+   Compiling proc-macro-error-attr v1.0.4
+   Compiling foldhash v0.1.5
+   Compiling unicode-bidi v0.3.18
+   Compiling data-encoding v2.10.0
+   Compiling rustls-webpki v0.103.13
+   Compiling adler2 v2.0.1
+   Compiling utf-8 v0.7.6
+   Compiling unicase v2.9.0
+   Compiling simd-adler32 v0.3.8
+   Compiling num-bigint-dig v0.8.6
+   Compiling allocator-api2 v0.2.21
+   Compiling mime_guess v2.0.5
+   Compiling miniz_oxide v0.8.9
+   Compiling hashbrown v0.15.5
+   Compiling tungstenite v0.24.0
+   Compiling num-iter v0.1.45
+   Compiling pest_meta v2.8.6
+   Compiling pkcs8 v0.10.2
+   Compiling brotli-decompressor v5.0.0
+   Compiling serde_urlencoded v0.7.1
+   Compiling regex-automata v0.4.14
+   Compiling concurrent-queue v2.5.0
+   Compiling indexmap v1.9.3
+   Compiling proc-macro-error v1.0.4
+   Compiling parking v2.2.1
+   Compiling iana-time-zone v0.1.65
+   Compiling crc-catalog v2.5.0
+   Compiling utf8parse v0.2.2
+   Compiling time-core v0.1.4
+   Compiling getrandom v0.4.2
+   Compiling powerfmt v0.2.0
+   Compiling num-conv v0.1.0
+   Compiling deranged v0.4.0
+   Compiling anstyle-parse v1.0.0
+   Compiling time-macros v0.2.22
+   Compiling crc v3.4.0
+   Compiling chrono v0.4.44
+   Compiling event-listener v5.4.1
+   Compiling brotli v8.0.2
+   Compiling axum-core v0.4.5
+   Compiling zstd v0.13.3
+   Compiling pest_generator v2.8.6
+   Compiling tokio-tungstenite v0.24.0
+   Compiling flate2 v1.1.9
+   Compiling hashlink v0.10.0
+   Compiling pkcs1 v0.7.5
+   Compiling tokio-util v0.7.18
+   Compiling tokio-stream v0.1.18
+   Compiling either v1.16.0
+   Compiling axum-macros v0.4.2
+   Compiling pin-project-internal v1.1.11
+   Compiling webpki-roots v0.26.11
+   Compiling crossbeam-queue v0.3.12
+   Compiling serde_path_to_error v0.1.20
+   Compiling sha2 v0.10.9
+   Compiling signature v2.2.0
+   Compiling hmac v0.12.1
+   Compiling futures-intrusive v0.5.0
+   Compiling universal-hash v0.5.1
+   Compiling multer v3.1.0
+   Compiling cookie v0.18.1
+   Compiling anstyle-query v1.1.5
+   Compiling dlv-list v0.3.0
+   Compiling colorchoice v1.0.5
+   Compiling anstyle v1.0.14
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling anyhow v1.0.102
+   Compiling opaque-debug v0.3.1
+   Compiling compression-core v0.4.31
+   Compiling fnv v1.0.7
+   Compiling portable-atomic v1.13.1
+   Compiling matchit v0.7.3
+   Compiling unicode-properties v0.1.4
+   Compiling compression-codecs v0.4.37
+   Compiling http v0.2.12
+   Compiling stringprep v0.1.5
+   Compiling axum v0.7.9
+   Compiling polyval v0.6.2
+   Compiling sqlx-core v0.8.6
+   Compiling anstream v1.0.0
+   Compiling regex v1.12.3
+   Compiling ordered-multimap v0.4.3
+   Compiling hkdf v0.12.4
+   Compiling rsa v0.9.10
+   Compiling pin-project v1.1.11
+   Compiling uuid v1.22.0
+   Compiling pest_derive v2.8.6
+   Compiling time v0.3.41
+   Compiling tokio-rustls v0.26.4
+   Compiling validator_types v0.16.0
+   Compiling futures-executor v0.3.32
+   Compiling atoi v2.0.0
+   Compiling hdrhistogram v7.5.4
+   Compiling raw-cpuid v11.6.0
+   Compiling headers-core v0.3.0
+   Compiling md-5 v0.10.6
+   Compiling encoding_rs v0.8.35
+   Compiling linked-hash-map v0.5.6
+   Compiling diff v0.1.13
+   Compiling whoami v1.6.1
+   Compiling base64 v0.13.1
+   Compiling if_chain v1.0.3
+   Compiling clap_lex v1.1.0
+   Compiling minimal-lexical v0.2.1
+   Compiling strsim v0.11.1
+   Compiling dotenvy v0.15.7
+   Compiling unsafe-libyaml-norway v0.2.15
+   Compiling hashbrown v0.14.5
+   Compiling bitflags v1.3.2
+   Compiling yansi v1.0.1
+   Compiling heck v0.5.0
+   Compiling hex v0.4.3
+   Compiling clap_derive v4.6.0
+   Compiling quanta v0.12.6
+   Compiling sqlx-mysql v0.8.6
+   Compiling dashmap v5.5.3
+   Compiling serde_norway v0.9.42
+   Compiling pretty_assertions v1.4.1
+   Compiling ron v0.7.1
+   Compiling clap_builder v4.6.0
+   Compiling nom v7.1.3
+   Compiling validator_derive v0.16.0
+   Compiling yaml-rust v0.4.5
+   Compiling tower v0.4.13
+   Compiling headers v0.4.1
+   Compiling futures v0.3.32
+   Compiling hyper-rustls v0.27.9
+   Compiling json5 v0.4.1
+   Compiling rust-multipart-rfc7578_2 v0.6.1
+   Compiling utoipa-gen v5.4.0
+   Compiling rust-ini v0.18.0
+   Compiling ghash v0.5.1
+   Compiling async-compression v0.4.41
+   Compiling matchers v0.2.0
+   Compiling idna v0.4.0
+   Compiling tower-http v0.6.11
+   Compiling aes v0.8.4
+   Compiling blowfish v0.9.1
+   Compiling ctr v0.9.2
+   Compiling reserve-port v2.4.0
+   Compiling toml v0.5.11
+   Compiling tracing-serde v0.2.0
+   Compiling sharded-slab v0.1.7
+   Compiling aead v0.5.2
+   Compiling tracing-log v0.2.0
+   Compiling spinning_top v0.3.0
+   Compiling thread_local v1.1.9
+   Compiling fastrand v2.3.0
+   Compiling no-std-compat v0.4.1
+   Compiling nonzero_ext v0.3.0
+   Compiling nu-ansi-term v0.50.3
+   Compiling cube-api v0.1.0 (/root/pr-928/CubeAPI)
+   Compiling futures-timer v3.0.3
+   Compiling pathdiff v0.2.3
+   Compiling auto-future v1.0.0
+   Compiling axum-test v14.10.0
+   Compiling tracing-subscriber v0.3.22
+   Compiling governor v0.6.3
+   Compiling axum-extra v0.9.6
+   Compiling aes-gcm v0.10.3
+   Compiling config v0.13.4
+   Compiling validator v0.16.1
+   Compiling reqwest v0.12.28
+   Compiling bcrypt v0.15.1
+   Compiling tower-http v0.5.2
+   Compiling clap v4.6.0
+   Compiling sqlx v0.8.6
+   Compiling utoipa v5.4.0
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 45.98s
+     Running unittests src/main.rs (target/debug/deps/cube_api-519113e82a85d616)
+
+running 85 tests
+test cubemaster::tests::build_id_path_segment_accepts_alphanumeric_and_hyphen ... ok
+test cubemaster::tests::build_id_path_segment_rejects_non_canonical_characters ... ok
+test crypto::tests::install_master_key_rejects_wrong_length ... ok
+test cubemaster::tests::build_id_path_segment_rejects_path_control_characters ... ok
+test cubemaster::tests::non_empty_str_treats_blank_input_as_none ... ok
+test cubemaster::tests::non_empty_str_trims_surrounding_whitespace ... ok
+test crypto::tests::decrypt_or_passthrough_handles_plaintext_and_bad_ciphertext ... ok
+test crypto::tests::encrypt_decrypt_roundtrip ... ok
+test cubemaster::tests::sandbox_info_accepts_camel_case_resource_aliases ... ok
+test cubemaster::tests::get_sandbox_prefers_sandbox_container_timestamps_and_host ... ok
+test handlers::agenthub::tests::egress_mode_hides_the_real_key_from_openclaw ... ok
+test cubemaster::tests::sandbox_info_deserializes_resource_fields_from_list_payload ... ok
+test handlers::agenthub::tests::custom_upstream_namespaces_primary_under_its_provider ... ok
+test handlers::agenthub::tests::model_suffix_strips_only_the_first_prefix ... ok
+test handlers::agenthub::tests::merge_llm_spec_leaves_the_gateway_alone ... ok
+test handlers::agenthub::tests::full_init_spec_manages_gateway_with_explicit_token ... ok
+test handlers::agenthub::tests::official_deepseek_model_keeps_its_namespace ... ok
+test handlers::auth::tests::password_matches_rejects_missing_user ... ok
+test handlers::auth::tests::change_password_uses_non_enumerating_error_message ... ok
+test handlers::auth::tests::session_ttl_is_limited_to_one_day ... ok
+test handlers::agenthub::tests::remove_openclaw_snapshot_rejects_invalid_id ... ok
+test handlers::agenthub::tests::remove_openclaw_snapshot_missing_root_is_idempotent ... ok
+test handlers::agenthub::tests::remove_openclaw_snapshot_removes_directory_leaf ... ok
+test handlers::agenthub::tests::remove_openclaw_snapshot_unlinks_leaf_symlink_only ... ok
+test logging::http::tests::signs_exact_body_and_sets_event_header ... ok
+test logging::http::tests::filters_and_delivers_without_blocking ... ok
+test middleware::auth::tests::callback_receives_request_path ... ok
+test middleware::auth::tests::missing_credential_returns_401 ... ok
+test middleware::auth::tests::callback_receives_distinct_method_for_same_path ... ok
+test models::tests::new_sandbox_accepts_e2b_envs_alias ... ok
+test middleware::auth::tests::no_callback_configured_passthrough ... ok
+test models::tests::set_timeout_request_accepts_never_timeout ... ok
+test models::tests::set_timeout_request_accepts_zero_and_positive ... ok
+test models::tests::sandbox_network_config_accepts_snake_case_policy_fields ... ok
+test models::tests::set_timeout_request_rejects_invalid_negative_values ... ok
+test middleware::auth::tests::callback_rejection_returns_401 ... ok
+test middleware::auth::tests::callback_receives_correct_method_for_write_operations ... ok
+test logging::http::tests::retries_500_but_not_400 ... ok
+test routes::tests::auth_login_route_is_rate_limited_without_auth_middleware ... ok
+test services::cluster::tests::builds_views_and_overview_from_snapshots ... ok
+test services::cluster::tests::saturation_is_clamped ... ok
+test services::sandboxes::tests::create_sandbox_accepts_valid_env_var_names ... ok
+test services::sandboxes::tests::create_sandbox_forwards_create_time_env_vars_to_cubemaster ... ok
+test routes::tests::preserves_root_e2b_routes ... ok
+test routes::tests::removes_cluster_routes_from_root_surface ... ok
+test services::sandboxes::tests::create_sandbox_rejects_dangerous_env_var_names ... ok
+test services::sandboxes::tests::create_sandbox_rejects_dangerous_env_var_names_case_insensitive ... ok
+test services::sandboxes::tests::create_sandbox_rejects_invalid_env_var_name_format ... ok
+test services::sandboxes::tests::create_sandbox_rejects_invalid_env_var_value ... ok
+test services::sandboxes::tests::create_sandbox_request_serializes_lifecycle_flags ... ok
+test services::sandboxes::tests::create_sandbox_request_timeout_wire_shape ... ok
+test services::sandboxes::tests::lifecycle_object_translates_to_cubemaster_bools ... ok
+test services::sandboxes::tests::listed_sandbox_maps_paused_container_state_from_cubemaster_list ... ok
+test services::sandboxes::tests::listed_sandbox_preserves_resources_from_cubemaster_list ... ok
+test services::sandboxes::tests::metadata_filter_matches_all_pairs ... ok
+test services::sandboxes::tests::network_context_accepts_allow_out_domain_when_internet_access_disabled ... ok
+test services::sandboxes::tests::network_context_forwards_egress_rules ... ok
+test services::sandboxes::tests::network_context_ignores_allow_public_traffic_for_outbound_access ... ok
+test services::sandboxes::tests::network_context_rejects_allow_out_domain_when_only_allow_public_traffic_disabled ... ok
+test services::sandboxes::tests::network_context_rejects_allow_out_domain_without_deny_all ... ok
+test services::sandboxes::tests::network_rules_serialize_to_camel_case_wire ... ok
+test services::sandboxes::tests::new_sandbox_timeout_defaults_to_none_when_omitted ... ok
+test services::sandboxes::tests::create_sandbox_omits_create_time_env_vars_when_absent ... ok
+test services::sandboxes::tests::sandbox_update_request_timeout_wire_shape ... ok
+test services::snapshots::tests::normalize_next_token_drops_empty_and_whitespace_cursors ... ok
+test services::snapshots::tests::operation_ready_guard_rejects_non_ready_status ... ok
+test services::snapshots::tests::snapshot_info_falls_back_to_snapshot_id_for_names ... ok
+test services::snapshots::tests::snapshot_info_uses_e2b_shape_without_operation_id ... ok
+test services::snapshots::tests::snapshot_list_item_uses_snapshot_id_field_shape ... ok
+test services::snapshots::tests::snapshot_ready_guard_rejects_non_ready_status ... ok
+test services::templates::tests::build_template_cube_network_config_accepts_domain_when_internet_disabled ... ok
+test services::templates::tests::build_template_container_overrides_maps_cli_fields ... ok
+test services::templates::tests::build_template_cube_network_config_includes_egress_rules ... ok
+test services::templates::tests::build_template_cube_network_config_rejects_allow_out_domain_without_deny_all ... ok
+test services::templates::tests::validate_dns_servers_rejects_invalid_ip ... ok
+test services::tests::allow_out_cidr_does_not_require_deny_all ... ok
+test services::tests::allow_out_domain_accepts_default_deny_all ... ok
+test services::sandboxes::tests::kill_sandbox_maps_cubemaster_not_found_to_app_not_found ... ok
+test services::tests::allow_out_domain_accepts_explicit_deny_all ... ok
+test services::tests::allow_out_domain_requires_deny_all_or_default_deny_all ... ok
+test routes::tests::serves_web_routes_under_cubeapi_prefix ... ok
+test routes::tests::merge_preserves_per_router_timeout_layers ... ok
+test routes::tests::delete_template_uses_long_router_timeout ... ok
+test handlers::auth::tests::password_matches_supports_hashed_and_legacy_passwords ... ok
+test crypto::tests::password_hash_verification_supports_bcrypt_and_legacy_plaintext ... ok
+
+test result: ok. 85 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.72s
+
+   Compiling proc-macro2 v1.0.106
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.45
+   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling version_check v0.9.5
+   Compiling memchr v2.8.0
+   Compiling smallvec v1.15.1
+   Compiling typenum v1.19.0
+   Compiling serde_core v1.0.228
+   Compiling once_cell v1.21.4
+   Compiling pin-project-lite v0.2.17
+   Compiling itoa v1.0.17
+   Compiling generic-array v0.14.7
+   Compiling bytes v1.11.1
+   Compiling futures-core v0.3.32
+   Compiling subtle v2.6.1
+   Compiling scopeguard v1.2.0
+   Compiling parking_lot_core v0.9.12
+   Compiling lock_api v0.4.14
+   Compiling syn v2.0.117
+   Compiling futures-sink v0.3.32
+   Compiling find-msvc-tools v0.1.9
+   Compiling shlex v1.3.0
+   Compiling serde v1.0.228
+   Compiling const-oid v0.9.6
+   Compiling futures-channel v0.3.32
+   Compiling stable_deref_trait v1.2.1
+   Compiling slab v0.4.12
+   Compiling futures-task v0.3.32
+   Compiling getrandom v0.2.17
+   Compiling errno v0.3.14
+   Compiling mio v1.1.1
+   Compiling rand_core v0.6.4
+   Compiling signal-hook-registry v1.4.8
+   Compiling jobserver v0.1.34
+   Compiling parking_lot v0.12.5
+   Compiling socket2 v0.6.3
+   Compiling crypto-common v0.1.7
+   Compiling cc v1.2.56
+   Compiling zeroize v1.8.2
+   Compiling log v0.4.29
+   Compiling futures-io v0.3.32
+   Compiling tracing-core v0.1.36
+   Compiling autocfg v1.5.0
+   Compiling block-buffer v0.10.4
+   Compiling http v1.4.0
+   Compiling digest v0.10.7
+   Compiling zerocopy v0.8.42
+   Compiling cpufeatures v0.2.17
+   Compiling libm v0.2.16
+   Compiling num-traits v0.2.19
+   Compiling writeable v0.6.2
+   Compiling percent-encoding v2.3.2
+   Compiling zmij v1.0.21
+   Compiling litemap v0.8.1
+   Compiling icu_normalizer_data v2.1.1
+   Compiling serde_json v1.0.149
+   Compiling icu_properties_data v2.1.2
+   Compiling spin v0.9.8
+   Compiling httparse v1.10.1
+   Compiling http-body v1.0.1
+   Compiling ring v0.17.14
+   Compiling form_urlencoded v1.2.2
+   Compiling rustls-pki-types v1.14.1
+   Compiling crossbeam-utils v0.8.21
+   Compiling byteorder v1.5.0
+   Compiling base64 v0.22.1
+   Compiling tower-service v0.3.3
+   Compiling untrusted v0.9.0
+   Compiling pkg-config v0.3.32
+   Compiling lazy_static v1.5.0
+   Compiling bitflags v2.11.0
+   Compiling ahash v0.7.8
+   Compiling synstructure v0.13.2
+   Compiling zstd-sys v2.0.16+zstd.1.5.7
+   Compiling equivalent v1.0.2
+   Compiling rustls v0.23.40
+   Compiling base64ct v1.8.3
+   Compiling tower-layer v0.3.3
+   Compiling utf8_iter v1.0.4
+   Compiling pem-rfc7468 v0.7.0
+   Compiling sha1 v0.10.6
+   Compiling httpdate v1.0.3
+   Compiling tinyvec_macros v0.1.1
+   Compiling try-lock v0.2.5
+   Compiling want v0.3.1
+   Compiling tinyvec v1.10.0
+   Compiling der v0.7.10
+   Compiling webpki-roots v1.0.7
+   Compiling inout v0.1.4
+   Compiling sync_wrapper v1.0.2
+   Compiling pin-utils v0.1.0
+   Compiling ryu v1.0.23
+   Compiling thiserror v1.0.69
+   Compiling crc32fast v1.5.0
+   Compiling hashbrown v0.16.1
+   Compiling ucd-trie v0.1.7
+   Compiling alloc-no-stdlib v2.0.4
+   Compiling atomic-waker v1.1.2
+   Compiling zstd-safe v7.2.4
+   Compiling syn v1.0.109
+   Compiling alloc-stdlib v0.2.2
+   Compiling pest v2.8.6
+   Compiling zerofrom-derive v0.1.6
+   Compiling serde_derive v1.0.228
+   Compiling tokio-macros v2.6.1
+   Compiling yoke-derive v0.8.1
+   Compiling tokio v1.50.0
+   Compiling futures-macro v0.3.32
+   Compiling zerofrom v0.1.6
+   Compiling zerovec-derive v0.11.2
+   Compiling displaydoc v0.2.5
+   Compiling yoke v0.8.1
+   Compiling tracing-attributes v0.1.31
+   Compiling zerotrie v0.2.3
+   Compiling futures-util v0.3.32
+   Compiling zerovec v0.11.5
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.3.1
+   Compiling tracing v0.1.44
+   Compiling rand v0.8.6
+   Compiling indexmap v2.13.0
+   Compiling spki v0.7.3
+   Compiling tinystr v0.8.2
+   Compiling icu_locale_core v2.1.1
+   Compiling potential_utf v0.1.4
+   Compiling icu_collections v2.1.1
+   Compiling thiserror-impl v1.0.69
+   Compiling unicode-normalization v0.1.25
+   Compiling cipher v0.4.4
+   Compiling hyper v1.8.1
+   Compiling icu_provider v2.1.1
+   Compiling hashbrown v0.12.3
+   Compiling icu_properties v2.1.2
+   Compiling icu_normalizer v2.1.1
+   Compiling num-integer v0.1.46
+   Compiling http-body-util v0.1.3
+   Compiling aho-corasick v1.1.4
+   Compiling proc-macro-error-attr v1.0.4
+   Compiling foldhash v0.1.5
+   Compiling rustversion v1.0.22
+   Compiling ipnet v2.12.0
+   Compiling idna_adapter v1.2.1
+   Compiling idna v1.1.0
+   Compiling allocator-api2 v0.2.21
+   Compiling url v2.5.8
+   Compiling unicode-bidi v0.3.18
+   Compiling thiserror v2.0.18
+   Compiling num-bigint-dig v0.8.6
+   Compiling simd-adler32 v0.3.8
+   Compiling regex-syntax v0.8.10
+   Compiling adler2 v2.0.1
+   Compiling mime v0.3.17
+   Compiling miniz_oxide v0.8.9
+   Compiling hashbrown v0.15.5
+   Compiling hyper-util v0.1.20
+   Compiling num-iter v0.1.45
+   Compiling tower v0.5.3
+   Compiling pkcs8 v0.10.2
+   Compiling pest_meta v2.8.6
+   Compiling rustls-webpki v0.103.13
+   Compiling regex-automata v0.4.14
+   Compiling async-trait v0.1.89
+   Compiling thiserror-impl v2.0.18
+   Compiling brotli-decompressor v5.0.0
+   Compiling concurrent-queue v2.5.0
+   Compiling proc-macro-error v1.0.4
+   Compiling getrandom v0.4.2
+   Compiling data-encoding v2.10.0
+   Compiling utf-8 v0.7.6
+   Compiling utf8parse v0.2.2
+   Compiling parking v2.2.1
+   Compiling iana-time-zone v0.1.65
+   Compiling crc-catalog v2.5.0
+   Compiling crc v3.4.0
+   Compiling chrono v0.4.44
+   Compiling event-listener v5.4.1
+   Compiling anstyle-parse v1.0.0
+   Compiling tungstenite v0.24.0
+   Compiling brotli v8.0.2
+   Compiling flate2 v1.1.9
+   Compiling pest_generator v2.8.6
+   Compiling pkcs1 v0.7.5
+   Compiling hashlink v0.10.0
+   Compiling tokio-stream v0.1.18
+   Compiling either v1.16.0
+   Compiling serde_urlencoded v0.7.1
+   Compiling webpki-roots v0.26.11
+   Compiling crossbeam-queue v0.3.12
+   Compiling indexmap v1.9.3
+   Compiling sha2 v0.10.9
+   Compiling signature v2.2.0
+   Compiling hmac v0.12.1
+   Compiling universal-hash v0.5.1
+   Compiling futures-intrusive v0.5.0
+   Compiling multer v3.1.0
+   Compiling anstyle-query v1.1.5
+   Compiling portable-atomic v1.13.1
+   Compiling unicode-properties v0.1.4
+   Compiling dlv-list v0.3.0
+   Compiling compression-core v0.4.31
+   Compiling anstyle v1.0.14
+   Compiling opaque-debug v0.3.1
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling colorchoice v1.0.5
+   Compiling polyval v0.6.2
+   Compiling anstream v1.0.0
+   Compiling ordered-multimap v0.4.3
+   Compiling stringprep v0.1.5
+   Compiling uuid v1.22.0
+   Compiling sqlx-core v0.8.6
+   Compiling hkdf v0.12.4
+   Compiling rsa v0.9.10
+   Compiling axum-core v0.4.5
+   Compiling regex v1.12.3
+   Compiling pest_derive v2.8.6
+   Compiling tokio-rustls v0.26.4
+   Compiling tokio-tungstenite v0.24.0
+   Compiling validator_types v0.16.0
+   Compiling futures-executor v0.3.32
+   Compiling tokio-util v0.7.18
+   Compiling pin-project-internal v1.1.11
+   Compiling axum-macros v0.4.2
+   Compiling raw-cpuid v11.6.0
+   Compiling atoi v2.0.0
+   Compiling headers-core v0.3.0
+   Compiling serde_path_to_error v0.1.20
+   Compiling md-5 v0.10.6
+   Compiling encoding_rs v0.8.35
+   Compiling hashbrown v0.14.5
+   Compiling clap_lex v1.1.0
+   Compiling whoami v1.6.1
+   Compiling bitflags v1.3.2
+   Compiling base64 v0.13.1
+   Compiling heck v0.5.0
+   Compiling dotenvy v0.15.7
+   Compiling linked-hash-map v0.5.6
+   Compiling anyhow v1.0.102
+   Compiling hex v0.4.3
+   Compiling minimal-lexical v0.2.1
+   Compiling strsim v0.11.1
+   Compiling matchit v0.7.3
+   Compiling unsafe-libyaml-norway v0.2.15
+   Compiling if_chain v1.0.3
+   Compiling validator_derive v0.16.0
+   Compiling axum v0.7.9
+   Compiling clap_builder v4.6.0
+   Compiling sqlx-mysql v0.8.6
+   Compiling nom v7.1.3
+   Compiling serde_norway v0.9.42
+   Compiling quanta v0.12.6
+   Compiling yaml-rust v0.4.5
+   Compiling dashmap v5.5.3
+   Compiling ron v0.7.1
+   Compiling clap_derive v4.6.0
+   Compiling pin-project v1.1.11
+   Compiling headers v0.4.1
+   Compiling json5 v0.4.1
+   Compiling futures v0.3.32
+   Compiling hyper-rustls v0.27.9
+   Compiling utoipa-gen v5.4.0
+   Compiling rust-ini v0.18.0
+   Compiling ghash v0.5.1
+   Compiling matchers v0.2.0
+   Compiling tower-http v0.6.11
+   Compiling idna v0.4.0
+   Compiling blowfish v0.9.1
+   Compiling ctr v0.9.2
+   Compiling aes v0.8.4
+   Compiling toml v0.5.11
+   Compiling tracing-serde v0.2.0
+   Compiling sharded-slab v0.1.7
+   Compiling zstd v0.13.3
+   Compiling hdrhistogram v7.5.4
+   Compiling tracing-log v0.2.0
+   Compiling aead v0.5.2
+   Compiling compression-codecs v0.4.37
+   Compiling spinning_top v0.3.0
+   Compiling thread_local v1.1.9
+   Compiling nu-ansi-term v0.50.3
+   Compiling cube-api v0.1.0 (/root/pr-928/CubeAPI)
+   Compiling pathdiff v0.2.3
+   Compiling futures-timer v3.0.3
+   Compiling fastrand v2.3.0
+   Compiling no-std-compat v0.4.1
+   Compiling async-compression v0.4.41
+   Compiling nonzero_ext v0.3.0
+   Compiling axum-extra v0.9.6
+   Compiling governor v0.6.3
+   Compiling config v0.13.4
+   Compiling tracing-subscriber v0.3.22
+   Compiling tower-http v0.5.2
+   Compiling tower v0.4.13
+   Compiling aes-gcm v0.10.3
+   Compiling bcrypt v0.15.1
+   Compiling validator v0.16.1
+   Compiling reqwest v0.12.28
+   Compiling clap v4.6.0
+   Compiling sqlx v0.8.6
+   Compiling utoipa v5.4.0
+    Finished `release` profile [optimized] target(s) in 2m 05s

@@ -1,0 +1,7 @@
+2026-07-13T23:35:14+08:00
+2026/07/13 23:35:14 submitted template image job: job_id=0ace78b3-d46b-43b2-a1bc-3de968bc3aa2 template_id=tpl-8cae67e1f1e843e68c19e25a
+2026/07/13 23:35:14 [1/7] PULLING progress=0% template_id=tpl-8cae67e1f1e843e68c19e25a job_id=0ace78b3-d46b-43b2-a1bc-3de968bc3aa2
+2026/07/13 23:35:16 [2/7] UNPACKING progress=20% template_id=tpl-8cae67e1f1e843e68c19e25a job_id=0ace78b3-d46b-43b2-a1bc-3de968bc3aa2 artifact_id=rfs-dc867241cbf96fd0de8fe827
+2026/07/13 23:35:22 [6/7] CREATING_TEMPLATE progress=85% distribution=1/1 ready, 0 failed template_id=tpl-8cae67e1f1e843e68c19e25a job_id=0ace78b3-d46b-43b2-a1bc-3de968bc3aa2 artifact_id=rfs-dc867241cbf96fd0de8fe827
+2026/07/13 23:35:28 [7/7] READY progress=100% distribution=1/1 ready, 0 failed template_id=tpl-8cae67e1f1e843e68c19e25a job_id=0ace78b3-d46b-43b2-a1bc-3de968bc3aa2 artifact_id=rfs-dc867241cbf96fd0de8fe827
+2026/07/13 23:35:28 template image job succeeded template_id=tpl-8cae67e1f1e843e68c19e25a job_id=0ace78b3-d46b-43b2-a1bc-3de968bc3aa2 artifact_id=rfs-dc867241cbf96fd0de8fe827 distribution=1/1 ready, 0 failed

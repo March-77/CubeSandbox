@@ -1,0 +1,75 @@
+2026-07-13T23:34:10+08:00
+Second compatibility fix: add rackup 2.2.1 required by Sinatra 4
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  20.99kB
+Step 1/12 : ARG CUBE_BASE_IMAGE=ghcr.io/tencentcloud/cubesandbox-base:2026.16
+Step 2/12 : FROM ${CUBE_BASE_IMAGE}
+ ---> fd9b77655ff0
+Step 3/12 : ARG DEBIAN_FRONTEND=noninteractive
+ ---> Using cache
+ ---> 63673d349e54
+Step 4/12 : ARG BUNDLER_VERSION=2.5.23
+ ---> Using cache
+ ---> 13eb72352f8c
+Step 5/12 : RUN apt-get update     && apt-get install -y --no-install-recommends         build-essential ca-certificates curl ruby ruby-dev     && gem install bundler -v "${BUNDLER_VERSION}" --no-document     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 913abbbee713
+Step 6/12 : WORKDIR /opt/sinatra
+ ---> Using cache
+ ---> a3f42b372d0f
+Step 7/12 : COPY Gemfile app.rb ./
+ ---> a6e6e5a156c6
+Step 8/12 : RUN bundle config set mirror.https://rubygems.org https://gems.ruby-china.com
+ ---> Running in 46326ca8e8cc
+ ---> Removed intermediate container 46326ca8e8cc
+ ---> dc25dfc9d72c
+Step 9/12 : RUN bundle config set without development     && bundle install --jobs 4 --retry 3     && mkdir -p /workspace/data     && chown -R 1000:1000 /workspace
+ ---> Running in 2f09ec5aefc1
+[91mDon't run Bundler as root. Installing your bundle as root will break this
+application for all non-root users on this machine.
+[0mFetching gem metadata from https://gems.ruby-china.com/....
+Resolving dependencies...
+Fetching base64 0.3.0
+Fetching mustermann 3.1.1
+Fetching nio4r 2.7.5
+Fetching logger 1.7.0
+Installing base64 0.3.0
+Fetching rack 3.2.6
+Installing logger 1.7.0
+Fetching tilt 2.8.0
+Installing mustermann 3.1.1
+Installing nio4r 2.7.5 with native extensions
+Installing rack 3.2.6
+Fetching rack-protection 4.1.1
+Fetching rack-session 2.1.2
+Installing tilt 2.8.0
+Fetching rackup 2.2.1
+Installing rack-protection 4.1.1
+Installing rack-session 2.1.2
+Fetching sinatra 4.1.1
+Installing rackup 2.2.1
+Installing sinatra 4.1.1
+Fetching puma 6.6.0
+Installing puma 6.6.0 with native extensions
+Bundle complete! 3 Gemfile dependencies, 12 gems now installed.
+Gems in the group 'development' were not installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
+ ---> Removed intermediate container 2f09ec5aefc1
+ ---> 6e0777b41a8f
+Step 10/12 : ENV APP_ENV=production     BUNDLE_WITHOUT=development     PORT=4567     WORKSPACE=/workspace
+ ---> Running in ce1b87e11948
+ ---> Removed intermediate container ce1b87e11948
+ ---> 764bd91e3830
+Step 11/12 : EXPOSE 4567 49983
+ ---> Running in 18f6c6a8a9ab
+ ---> Removed intermediate container 18f6c6a8a9ab
+ ---> 18ac40ad4308
+Step 12/12 : CMD ["bundle", "exec", "ruby", "app.rb", "-o", "0.0.0.0"]
+ ---> Running in f5e61111eeff
+ ---> Removed intermediate container f5e61111eeff
+ ---> bdfca102792e
+Successfully built bdfca102792e
+Successfully tagged cubesandbox-pr926-ruby:verified-v2

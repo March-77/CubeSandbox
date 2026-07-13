@@ -1,0 +1,5 @@
+timestamp: baseline real CubeSandbox instance
+template: tpl-88f3722a6655408cbcb352e9
+sandbox_id: 70dbede8d3d84b929d33acea9f3665c9
+execution_result: Execution(Results: [], Logs: Logs(stdout: ['Hello from a real CubeSandbox MicroVM\n42\n'], stderr: []), Error: None)
+verification: PASS

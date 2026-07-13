@@ -1,0 +1,8 @@
+PR commit: c5f84f71c32df9c274812155e3bb77695c9808c2
+Template: tpl-f7a6b69fa99a4f75a9073103
+Sandbox ID: 9ac386253ba34c589f1224d0d480e769
+CLI: 2.119.2
+Node: v24.18.0
+Paused: 9ac386253ba34c589f1224d0d480e769
+Restored file: codebuddy-checkpoint-ok
+PR925_CODEBUDDY_REAL_CLUSTER=PASS
