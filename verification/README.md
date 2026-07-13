@@ -44,5 +44,3 @@ The server is in mainland China. The official CubeSandbox base manifest was
 verified against a mirror by digest; Ubuntu, RubyGems, and Cargo transport
 mirrors were used to avoid timeouts. Product versions and PR source behavior
 were otherwise preserved. No credentials are included in these artifacts.
-
-Autonomously-by: Codex:GPT-5
